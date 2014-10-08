@@ -294,7 +294,6 @@ Module General
             gszServerName = LineInput(dwFileNum)
             DSN_USER = LineInput(dwFileNum)
             szEncrypted = LineInput(dwFileNum)
-            'If (EncryptString(szEncrypted, szPassword) = True) Then
             If (DecryptString(szEncrypted, szPassword) = True) Then
                 DSN_PASSWORD = szPassword
             Else
