@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Datasonic Corporation Sdn Bhd")> 
 <Assembly: AssemblyProduct("CitiRep")> 
-<Assembly: AssemblyCopyright("")> 
+<Assembly: AssemblyCopyright("Felix Tan")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: CLSCompliant(True)> 
 
@@ -29,7 +29,7 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("2.0.0.3")> 
+<Assembly: AssemblyVersion("2.0.0.6")> 
 
 'version 20701, danny lim, 20100927, added mechanics to:-
 '                       - check for duplicated AWBs and reset AWBs mechanics in frmScan.vb 
@@ -38,4 +38,5 @@ Imports System.Runtime.InteropServices
 '                       - add a text box in uploadfilesetup.vb for file extension to be used.
 '                       - relays to frmcnprint
 'version 20703, dannylim, 20110608, modconvfunction.vb/formatfiledetails addin external condition of substition of BT character shld data is empty, 
+'version 20704, dannylim, 20120801, modconvfunction.vb/formatfiledetails added formatarithmeticfld(..) function to perform arithmetic setup
 'else will default to 'empty space'
