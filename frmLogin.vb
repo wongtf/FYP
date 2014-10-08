@@ -341,4 +341,7 @@ Public Class frmLogin
 
     End Sub
 
+    Private Sub txtLoginId_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLoginId.TextChanged
+
+    End Sub
 End Class

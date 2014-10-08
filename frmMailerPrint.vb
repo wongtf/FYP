@@ -269,6 +269,7 @@ Public Class frmMailerPrint
             myCmd.Connection = myconn
             myCmd.CommandTimeout = 1000
 
+
             'Retrieve the record information
             myCmd.CommandText = "exec sp_extractmprint '" & cbFileDate.Text & "','" & szBatchId & "','" & gszStationId & "'"
             datareader = myCmd.ExecuteReader()

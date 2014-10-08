@@ -89,6 +89,8 @@ Partial Class frmCardSetup
         Me.cmbDataFldName4 = New System.Windows.Forms.ComboBox
         Me.Label26 = New System.Windows.Forms.Label
         Me.tbReport = New System.Windows.Forms.TabPage
+        Me.cmdRptEdit = New System.Windows.Forms.Button
+        Me.Label18 = New System.Windows.Forms.Label
         Me.dbGridReport = New System.Windows.Forms.DataGridView
         Me.cmbReportFldName = New System.Windows.Forms.ComboBox
         Me.lblAuditRowNo = New System.Windows.Forms.Label
@@ -136,7 +138,6 @@ Partial Class frmCardSetup
         Me.Button6 = New System.Windows.Forms.Button
         Me.Label27 = New System.Windows.Forms.Label
         Me.Label31 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
         Me.TabControl1.SuspendLayout()
         Me.tabEmboss.SuspendLayout()
         CType(Me.dbgridEmboss, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1005,6 +1006,7 @@ Partial Class frmCardSetup
         '
         Me.tbReport.BackColor = System.Drawing.Color.LightSlateGray
         Me.tbReport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.tbReport.Controls.Add(Me.cmdRptEdit)
         Me.tbReport.Controls.Add(Me.Label18)
         Me.tbReport.Controls.Add(Me.dbGridReport)
         Me.tbReport.Controls.Add(Me.cmbReportFldName)
@@ -1023,6 +1025,29 @@ Partial Class frmCardSetup
         Me.tbReport.TabIndex = 4
         Me.tbReport.Text = "ReportData"
         Me.tbReport.UseVisualStyleBackColor = True
+        '
+        'cmdRptEdit
+        '
+        Me.cmdRptEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmdRptEdit.Image = Global.DPSReporting.My.Resources.Resources.file_edit
+        Me.cmdRptEdit.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.cmdRptEdit.Location = New System.Drawing.Point(309, 106)
+        Me.cmdRptEdit.Name = "cmdRptEdit"
+        Me.cmdRptEdit.Size = New System.Drawing.Size(78, 51)
+        Me.cmdRptEdit.TabIndex = 77
+        Me.cmdRptEdit.Text = "Update"
+        Me.cmdRptEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.cmdRptEdit.UseVisualStyleBackColor = True
+        '
+        'Label18
+        '
+        Me.Label18.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.Red
+        Me.Label18.Location = New System.Drawing.Point(501, 63)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(221, 21)
+        Me.Label18.TabIndex = 76
+        Me.Label18.Text = "Field7 is fixed to CourierCode"
         '
         'dbGridReport
         '
@@ -1068,7 +1093,7 @@ Partial Class frmCardSetup
         Me.cmdReportClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdReportClear.Image = Global.DPSReporting.My.Resources.Resources.Paintbrush_1
         Me.cmdReportClear.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdReportClear.Location = New System.Drawing.Point(405, 106)
+        Me.cmdReportClear.Location = New System.Drawing.Point(477, 106)
         Me.cmdReportClear.Name = "cmdReportClear"
         Me.cmdReportClear.Size = New System.Drawing.Size(78, 51)
         Me.cmdReportClear.TabIndex = 64
@@ -1081,7 +1106,7 @@ Partial Class frmCardSetup
         Me.cmdReportDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdReportDelete.Image = Global.DPSReporting.My.Resources.Resources.db_remove
         Me.cmdReportDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdReportDelete.Location = New System.Drawing.Point(314, 106)
+        Me.cmdReportDelete.Location = New System.Drawing.Point(393, 106)
         Me.cmdReportDelete.Name = "cmdReportDelete"
         Me.cmdReportDelete.Size = New System.Drawing.Size(78, 51)
         Me.cmdReportDelete.TabIndex = 65
@@ -1558,16 +1583,6 @@ Partial Class frmCardSetup
         Me.Label31.Text = "Data Field Name"
         Me.Label31.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'Label18
-        '
-        Me.Label18.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.Red
-        Me.Label18.Location = New System.Drawing.Point(501, 63)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(221, 21)
-        Me.Label18.TabIndex = 76
-        Me.Label18.Text = "Field7 is fixed to CourierCode"
-        '
         'frmCardSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1731,4 +1746,5 @@ Partial Class frmCardSetup
     Friend WithEvents Label31 As System.Windows.Forms.Label
     Friend WithEvents lblMailerRowNo As System.Windows.Forms.Label
     Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents cmdRptEdit As System.Windows.Forms.Button
 End Class

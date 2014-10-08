@@ -97,7 +97,7 @@ Public Class frmCardSetup
         AddModifyDataFld(True, 0)
     End Sub
 
-    Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEmbEdit.Click, cmdEncEdit.Click, cmdOCREdit.Click, cmdSMCEdit.Click, cmdMailerEdit.Click
+    Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEmbEdit.Click, cmdEncEdit.Click, cmdOCREdit.Click, cmdSMCEdit.Click, cmdMailerEdit.Click, cmdRptEdit.Click
         AddModifyDataFld(False, 0)
     End Sub
 
@@ -420,6 +420,10 @@ Public Class frmCardSetup
                             MessageBox.Show(szReportFldName & " already assigned to others field.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Exit Sub
                         End If
+                    Else
+                        szSQL = "UPDATE ReportDetails SET data_fldid='" & dwDataFldID & "' WHERE cs_id=" & _
+                                dwCardSetupID & " and ds_id=" & dwDataSetupID & " and report_fldtag='" & szReportFldName & "'"
+                        szAuditText = "Add Report Field [" & Trim(cmbDataFldName5.Text) & "] for " & szReportFldName
                     End If
 
                 Case 5  'Mailer
@@ -690,4 +694,6 @@ Public Class frmCardSetup
     Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
         Me.Close()
     End Sub
+
+    
 End Class

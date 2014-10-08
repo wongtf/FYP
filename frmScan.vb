@@ -593,7 +593,6 @@ Public Class frmScan
         Me.Controls.Add(Me.btnResetAWBs)
         Me.Controls.Add(Me.pnlFile)
         Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.lvField)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.lbCount)
@@ -602,6 +601,7 @@ Public Class frmScan
         Me.Controls.Add(Me.lbNotScan)
         Me.Controls.Add(Me.btnSaveOne)
         Me.Controls.Add(Me.picLoad)
+        Me.Controls.Add(Me.lvField)
         Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -717,9 +717,18 @@ Public Class frmScan
 
             datareader.Close()
 
+            'edit by azuwa kasnan 27102013
             If cbType.Items.Count > 0 Then
-                cbType.SelectedIndex = 1
+                cbType.SelectedIndex = -1
             End If
+
+            'If cbType.Items.Count = 0 Then
+            'cbType.SelectedIndex = -1
+            'ElseIf cbType.Items.Count = 1 Then
+            'cbType.SelectedIndex = 0
+            'Else
+            'cbType.SelectedIndex = cbType.Items.Count - 1
+            'End If
 
             myconn.Close()
 
@@ -797,7 +806,7 @@ Public Class frmScan
                     dwEmpty += 1
                 End If
 
-                If (Trim(szCDSRef1) <> "") Then
+                If (Trim(szCDSRef1) <> "" Or Trim(szCDSRef1) = "") Then
                     Dim lvItem As New ListViewItem(dwCount)
 
                     lvItem.SubItems.Add(szPAN)
@@ -866,7 +875,8 @@ Public Class frmScan
 
             szFileDateNow = cbFileDate.SelectedItem.ToString
             If szFileType <> "NEW" And szFileType <> "RPL" And szFileType <> "UPG" And szFileType <> "B1" And szFileType <> "B2" And szFileType <> "B3" Then
-                szAirWayBillFileName = BankInfo.Folder_Ready & "AirWayBill" & szFileDateNow & szFileType & ".txt"
+                'szAirWayBillFileName = BankInfo.Folder_Ready & "AirWayBill" & szFileDateNow & szFileType & ".txt"
+                szAirWayBillFileName = BankInfo.Folder_Ready & "AirWayBill" & szFileDateNow & "Debit" & ".txt"
             Else
                 szAirWayBillFileName = BankInfo.Folder_Ready & "AirWayBill" & szFileDateNow & "Daily" & ".txt"
             End If
@@ -1319,7 +1329,7 @@ FailRecord:
             myCmd.Connection = myconn
             Dim datareader As OleDb.OleDbDataReader = Nothing
 
-            myCmd.CommandText = "SELECT * FROM UploadFileDetails where uf_name='" & szUF_Name & "' and uf_deleted=0"
+            myCmd.CommandText = "SELECT * FROM UploadFileDetails2 where uf_name='" & szUF_Name & "' and uf_deleted=0"
             datareader = myCmd.ExecuteReader()
             If datareader.HasRows Then
                 While datareader.Read()
@@ -1396,5 +1406,8 @@ FailRecord:
             End If
         End If
     End Sub
+
+
+
 
 End Class

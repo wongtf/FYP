@@ -1423,7 +1423,8 @@ Public Class frmJobSetup
 
                 If (IsDBNull(datareader("job_file_format"))) Then cbFileFormat.SelectedIndex = -1 Else cbFileFormat.SelectedIndex = datareader("job_file_format") - 1
                 If (IsDBNull(datareader("job_functype"))) Then cbFunctionType.SelectedIndex = -1 Else cbFunctionType.SelectedIndex = datareader("job_functype") - 1
-                If (IsDBNull(datareader("job_output_file_fmt"))) Then cbOutputFormat.SelectedIndex = -1 Else cbOutputFormat.SelectedIndex = datareader("job_output_file_fmt") - 1
+                'If (IsDBNull(datareader("job_output_file_fmt"))) Then cbOutputFormat.SelectedIndex = -1 Else cbOutputFormat.SelectedIndex = datareader("job_output_file_fmt") - 1
+                If (IsDBNull(datareader("job_output_file_fmt"))) Then cbOutputFormat.SelectedIndex = -1 Else cbOutputFormat.SelectedIndex = datareader("job_output_file_fmt")
                 If (IsDBNull(datareader("job_batch_type"))) Then cbBatchType.SelectedIndex = -1 Else cbBatchType.SelectedIndex = datareader("job_batch_type") - 1
 
                 If (IsDBNull(datareader("cs_id"))) Then cbCardSetup.SelectedIndex = -1 Else cbCardSetup.SelectedIndex = FindComboItem(cbCardSetup, datareader("cs_id"))
@@ -1629,7 +1630,7 @@ Public Class frmJobSetup
             szProdName = txtProdName.Text               'job_description
             dwFuncType = cbFunctionType.SelectedIndex + 1       'job_functype
             dwFileFormat = cbFileFormat.SelectedIndex + 1           'job_file_format
-            dwOutputFormat = cbOutputFormat.SelectedIndex           'job_output_file_fmt
+            dwOutputFormat = cbOutputFormat.SelectedIndex          'job_output_file_fmt
             dwBatchtype = cbBatchType.SelectedIndex + 1             'job_batch_type
             'dwProcType = cboProcType.SelectedIndex + 1
 

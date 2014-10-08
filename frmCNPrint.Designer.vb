@@ -39,11 +39,12 @@ Partial Class frmCNPrint
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.btnSelected = New System.Windows.Forms.Button
-        Me.picLoad = New System.Windows.Forms.PictureBox
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer
         Me.btnChange = New System.Windows.Forms.Button
         Me.cbDeliveryType = New System.Windows.Forms.ComboBox
         Me.btnExportCN = New System.Windows.Forms.Button
+        Me.btnExportPL = New System.Windows.Forms.Button
+        Me.picLoad = New System.Windows.Forms.PictureBox
         CType(Me.picLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -224,18 +225,6 @@ Partial Class frmCNPrint
         Me.btnSelected.Text = "&Print Selected"
         Me.btnSelected.UseVisualStyleBackColor = False
         '
-        'picLoad
-        '
-        Me.picLoad.BackColor = System.Drawing.Color.White
-        Me.picLoad.Image = CType(resources.GetObject("picLoad.Image"), System.Drawing.Image)
-        Me.picLoad.Location = New System.Drawing.Point(157, 199)
-        Me.picLoad.Name = "picLoad"
-        Me.picLoad.Size = New System.Drawing.Size(406, 133)
-        Me.picLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.picLoad.TabIndex = 84
-        Me.picLoad.TabStop = False
-        Me.picLoad.Visible = False
-        '
         'CrystalReportViewer1
         '
         Me.CrystalReportViewer1.ActiveViewIndex = -1
@@ -249,7 +238,7 @@ Partial Class frmCNPrint
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 470)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(733, 94)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(740, 86)
         Me.CrystalReportViewer1.TabIndex = 85
         Me.CrystalReportViewer1.ViewTimeSelectionFormula = ""
         Me.CrystalReportViewer1.Visible = False
@@ -287,13 +276,37 @@ Partial Class frmCNPrint
         Me.btnExportCN.Text = "&Export"
         Me.btnExportCN.UseVisualStyleBackColor = False
         '
+        'btnExportPL
+        '
+        Me.btnExportPL.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnExportPL.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportPL.ForeColor = System.Drawing.Color.White
+        Me.btnExportPL.Location = New System.Drawing.Point(199, 413)
+        Me.btnExportPL.Name = "btnExportPL"
+        Me.btnExportPL.Size = New System.Drawing.Size(98, 23)
+        Me.btnExportPL.TabIndex = 89
+        Me.btnExportPL.Text = "&Export PL"
+        Me.btnExportPL.UseVisualStyleBackColor = False
+        '
+        'picLoad
+        '
+        Me.picLoad.BackColor = System.Drawing.Color.White
+        Me.picLoad.Image = CType(resources.GetObject("picLoad.Image"), System.Drawing.Image)
+        Me.picLoad.Location = New System.Drawing.Point(157, 199)
+        Me.picLoad.Name = "picLoad"
+        Me.picLoad.Size = New System.Drawing.Size(406, 133)
+        Me.picLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.picLoad.TabIndex = 84
+        Me.picLoad.TabStop = False
+        Me.picLoad.Visible = False
+        '
         'frmCNPrint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSlateGray
-        Me.CancelButton = Me.btnClose
-        Me.ClientSize = New System.Drawing.Size(731, 454)
+        Me.ClientSize = New System.Drawing.Size(738, 446)
+        Me.Controls.Add(Me.btnExportPL)
         Me.Controls.Add(Me.btnExportCN)
         Me.Controls.Add(Me.cbDeliveryType)
         Me.Controls.Add(Me.btnChange)
@@ -347,4 +360,5 @@ Partial Class frmCNPrint
     Friend WithEvents btnChange As System.Windows.Forms.Button
     Friend WithEvents cbDeliveryType As System.Windows.Forms.ComboBox
     Friend WithEvents btnExportCN As System.Windows.Forms.Button
+    Friend WithEvents btnExportPL As System.Windows.Forms.Button
 End Class

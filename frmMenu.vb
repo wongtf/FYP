@@ -140,6 +140,7 @@ Public Class frmMenu
         Me.mnuDataConversion = New System.Windows.Forms.MenuItem
         Me.mnuFileOpen = New System.Windows.Forms.MenuItem
         Me.mnuPrintMailer = New System.Windows.Forms.MenuItem
+        Me.mnuCorpMailerPrint = New System.Windows.Forms.MenuItem
         Me.mnuFilePrint = New System.Windows.Forms.MenuItem
         Me.mnuFileScan = New System.Windows.Forms.MenuItem
         Me.MenuItem7 = New System.Windows.Forms.MenuItem
@@ -233,7 +234,6 @@ Public Class frmMenu
         Me.Label11 = New System.Windows.Forms.Label
         Me.picLogo = New System.Windows.Forms.PictureBox
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.mnuCorpMailerPrint = New System.Windows.Forms.MenuItem
         CType(Me.StatusBarPanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StatusBarPanel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,6 +266,11 @@ Public Class frmMenu
         '
         Me.mnuPrintMailer.Index = 2
         Me.mnuPrintMailer.Text = "Print Mailer"
+        '
+        'mnuCorpMailerPrint
+        '
+        Me.mnuCorpMailerPrint.Index = 3
+        Me.mnuCorpMailerPrint.Text = "Print Corporate Mailer"
         '
         'mnuFilePrint
         '
@@ -567,7 +572,7 @@ Public Class frmMenu
         'StatusBar
         '
         Me.StatusBar.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.StatusBar.Location = New System.Drawing.Point(0, 498)
+        Me.StatusBar.Location = New System.Drawing.Point(0, 456)
         Me.StatusBar.Name = "StatusBar"
         Me.StatusBar.Panels.AddRange(New System.Windows.Forms.StatusBarPanel() {Me.StatusBarPanel1, Me.StatusBarPanel2})
         Me.StatusBar.ShowPanels = True
@@ -889,7 +894,7 @@ Public Class frmMenu
         Me.Label11.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.ForeColor = System.Drawing.Color.DimGray
-        Me.Label11.Location = New System.Drawing.Point(1, 474)
+        Me.Label11.Location = New System.Drawing.Point(1, 432)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(930, 14)
         Me.Label11.TabIndex = 53
@@ -900,7 +905,7 @@ Public Class frmMenu
         Me.picLogo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picLogo.Image = CType(resources.GetObject("picLogo.Image"), System.Drawing.Image)
-        Me.picLogo.Location = New System.Drawing.Point(776, 422)
+        Me.picLogo.Location = New System.Drawing.Point(776, 380)
         Me.picLogo.Name = "picLogo"
         Me.picLogo.Size = New System.Drawing.Size(45, 45)
         Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -912,23 +917,18 @@ Public Class frmMenu
         Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(628, 434)
+        Me.PictureBox1.Location = New System.Drawing.Point(628, 392)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(136, 29)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'mnuCorpMailerPrint
-        '
-        Me.mnuCorpMailerPrint.Index = 3
-        Me.mnuCorpMailerPrint.Text = "Print Corporate Mailer"
-        '
         'frmMenu
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
         Me.BackColor = System.Drawing.Color.SlateGray
-        Me.ClientSize = New System.Drawing.Size(833, 521)
+        Me.ClientSize = New System.Drawing.Size(833, 479)
         Me.Controls.Add(Me.picLogo)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label11)
@@ -983,6 +983,7 @@ Public Class frmMenu
     Dim boolLogOff As Boolean
 
     Private Sub frmMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
 
         Try
             Dim szLastLogin As String
@@ -1603,4 +1604,5 @@ NextControl:
         dlgMailerPrint.Dispose()
         Me.Opacity = 1
     End Sub
+
 End Class

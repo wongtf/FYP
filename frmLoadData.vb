@@ -271,6 +271,7 @@ Public Class frmLoadData
                 FileGet(dwFileNum, szTempString)
                 FilePut(dwErrFileNum, szTempString)
             End If
+            'kelv-temp fix
             lngFileLen = FileLen(szTempEmbFileName) - dwHeaderSize
             lngRecPosition = dwHeaderSize + 1
 
@@ -461,13 +462,14 @@ ReCheckSupp:
                             End If
                         End If
                         szSuppMailerInd = GetFieldData(szSuppTextLine, "", dwDataSetupID, dwMailerInd)
-                        If szSuppMailerInd <> " " Then
-                            szErrorDesc = "Error formatting mailer info for supp card for " & szCardID & " in " & szEmbFile
-                            lstErrorFile.Items.Add(szErrorDesc)
-                            FilePut(dwErrFileNum, szTextLine)
-                            lErrcount = lErrcount + 1
-                            GoTo NextNewDataRec
-                        End If
+                        'kelv: disable mailer for PP
+                        'If szSuppMailerInd <> " " Then
+                        '    szErrorDesc = "Error formatting mailer info for supp card for " & szCardID & " in " & szEmbFile
+                        '    lstErrorFile.Items.Add(szErrorDesc)
+                        '    FilePut(dwErrFileNum, szTextLine)
+                        '    lErrcount = lErrcount + 1
+                        '    GoTo NextNewDataRec
+                        'End If
                     End If
                     If szMailerInd <> " " Then
                         If dwMailerInt > 0 Then
@@ -617,7 +619,8 @@ ReadNextChunk:
             Dim datareader As OleDb.OleDbDataReader = Nothing
 
             'print the audit report to printer
-            Dim szReportFile As String = "LoadReport.rpt"
+            'edit by azuwa kasnan 28102013
+            Dim szReportFile As String = "LoadReportDebit.rpt"
             Dim szSQL As String
             Dim dwReturnRow As Integer
             Dim szFileType As String

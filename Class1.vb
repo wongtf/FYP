@@ -41,7 +41,7 @@ Public Class Rijndael
         End Try
     End Function
 
-    ' Encrypts a given string 
+    ' Encrypts a given string
     Public Function Encrypt(ByVal data As String) As String Implements ICrypto.Encrypt
         Try
             Dim utf8 As New UTF8Encoding

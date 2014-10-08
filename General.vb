@@ -294,6 +294,7 @@ Module General
             gszServerName = LineInput(dwFileNum)
             DSN_USER = LineInput(dwFileNum)
             szEncrypted = LineInput(dwFileNum)
+            'If (EncryptString(szEncrypted, szPassword) = True) Then
             If (DecryptString(szEncrypted, szPassword) = True) Then
                 DSN_PASSWORD = szPassword
             Else
@@ -336,7 +337,7 @@ Module General
 
 Again:
         If dlgLogin.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Dim frmStart As New frmCardTypeSelection
+            Dim frmStart As New frmMenu
 
             If (frmStart.ShowDialog() <> Windows.Forms.DialogResult.OK) Then
                 GoTo Again

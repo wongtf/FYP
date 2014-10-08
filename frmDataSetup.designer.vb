@@ -30,6 +30,9 @@ Partial Class frmDataSetup
         Me.btnOpenSampleFile = New System.Windows.Forms.Button
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
         Me.Panel2 = New System.Windows.Forms.Panel
+        Me.chkCheckNmSeparator = New System.Windows.Forms.CheckBox
+        Me.rbDataType5 = New System.Windows.Forms.RadioButton
+        Me.chkCurrency = New System.Windows.Forms.CheckBox
         Me.txtOldDateFmt = New System.Windows.Forms.TextBox
         Me.Label15 = New System.Windows.Forms.Label
         Me.rbDataType2 = New System.Windows.Forms.RadioButton
@@ -58,9 +61,6 @@ Partial Class frmDataSetup
         Me.Label7 = New System.Windows.Forms.Label
         Me.txtCompositeFld = New System.Windows.Forms.TextBox
         Me.Label6 = New System.Windows.Forms.Label
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.txtStaticData = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.txtEndCode = New System.Windows.Forms.TextBox
@@ -74,6 +74,9 @@ Partial Class frmDataSetup
         Me.rbStartFld0 = New System.Windows.Forms.RadioButton
         Me.txtDataFldName = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox
+        Me.txtStaticData = New System.Windows.Forms.TextBox
+        Me.Label5 = New System.Windows.Forms.Label
         Me.cmdClear = New System.Windows.Forms.Button
         Me.cmdDelete = New System.Windows.Forms.Button
         Me.cmdEdit = New System.Windows.Forms.Button
@@ -82,15 +85,14 @@ Partial Class frmDataSetup
         Me.lblTotal = New System.Windows.Forms.Label
         Me.cmdClose = New System.Windows.Forms.Button
         Me.lblDataSetupID = New System.Windows.Forms.Label
-        Me.chkCurrency = New System.Windows.Forms.CheckBox
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         CType(Me.dgridDataSetup, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -191,6 +193,8 @@ Partial Class frmDataSetup
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.chkCheckNmSeparator)
+        Me.Panel2.Controls.Add(Me.rbDataType5)
         Me.Panel2.Controls.Add(Me.chkCurrency)
         Me.Panel2.Controls.Add(Me.txtOldDateFmt)
         Me.Panel2.Controls.Add(Me.Label15)
@@ -210,14 +214,49 @@ Partial Class frmDataSetup
         Me.Panel2.Controls.Add(Me.cmbOutputFormat)
         Me.Panel2.Controls.Add(Me.Label9)
         Me.Panel2.Controls.Add(Me.GroupBox5)
-        Me.Panel2.Controls.Add(Me.GroupBox4)
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.txtDataFldName)
         Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.GroupBox4)
         Me.Panel2.Location = New System.Drawing.Point(595, 13)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(412, 595)
+        Me.Panel2.Size = New System.Drawing.Size(412, 615)
         Me.Panel2.TabIndex = 5
+        '
+        'chkCheckNmSeparator
+        '
+        Me.chkCheckNmSeparator.AutoSize = True
+        Me.chkCheckNmSeparator.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkCheckNmSeparator.Location = New System.Drawing.Point(12, 590)
+        Me.chkCheckNmSeparator.Name = "chkCheckNmSeparator"
+        Me.chkCheckNmSeparator.Size = New System.Drawing.Size(124, 18)
+        Me.chkCheckNmSeparator.TabIndex = 33
+        Me.chkCheckNmSeparator.Text = "Name Separator"
+        Me.chkCheckNmSeparator.UseVisualStyleBackColor = True
+        '
+        'rbDataType5
+        '
+        Me.rbDataType5.BackColor = System.Drawing.SystemColors.Control
+        Me.rbDataType5.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.rbDataType5.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbDataType5.ForeColor = System.Drawing.Color.Blue
+        Me.rbDataType5.Location = New System.Drawing.Point(215, 201)
+        Me.rbDataType5.Name = "rbDataType5"
+        Me.rbDataType5.Size = New System.Drawing.Size(179, 17)
+        Me.rbDataType5.TabIndex = 30
+        Me.rbDataType5.Text = "Arithmetic Data Field"
+        Me.rbDataType5.UseVisualStyleBackColor = False
+        '
+        'chkCurrency
+        '
+        Me.chkCurrency.AutoSize = True
+        Me.chkCurrency.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkCurrency.Location = New System.Drawing.Point(303, 439)
+        Me.chkCurrency.Name = "chkCurrency"
+        Me.chkCurrency.Size = New System.Drawing.Size(107, 18)
+        Me.chkCurrency.TabIndex = 32
+        Me.chkCurrency.Text = "CurrencyField"
+        Me.chkCurrency.UseVisualStyleBackColor = True
         '
         'txtOldDateFmt
         '
@@ -520,36 +559,6 @@ Partial Class frmDataSetup
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "Composite Field"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.txtStaticData)
-        Me.GroupBox4.Controls.Add(Me.Label5)
-        Me.GroupBox4.ForeColor = System.Drawing.Color.Blue
-        Me.GroupBox4.Location = New System.Drawing.Point(5, 152)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(395, 44)
-        Me.GroupBox4.TabIndex = 8
-        Me.GroupBox4.TabStop = False
-        '
-        'txtStaticData
-        '
-        Me.txtStaticData.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStaticData.Location = New System.Drawing.Point(129, 17)
-        Me.txtStaticData.Name = "txtStaticData"
-        Me.txtStaticData.Size = New System.Drawing.Size(245, 21)
-        Me.txtStaticData.TabIndex = 10
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(50, 20)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(76, 14)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Static Data"
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
@@ -695,12 +704,42 @@ Partial Class frmDataSetup
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Data Field Name"
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.txtStaticData)
+        Me.GroupBox4.Controls.Add(Me.Label5)
+        Me.GroupBox4.ForeColor = System.Drawing.Color.Blue
+        Me.GroupBox4.Location = New System.Drawing.Point(5, 152)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(395, 44)
+        Me.GroupBox4.TabIndex = 8
+        Me.GroupBox4.TabStop = False
+        '
+        'txtStaticData
+        '
+        Me.txtStaticData.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtStaticData.Location = New System.Drawing.Point(129, 17)
+        Me.txtStaticData.Name = "txtStaticData"
+        Me.txtStaticData.Size = New System.Drawing.Size(245, 21)
+        Me.txtStaticData.TabIndex = 10
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(50, 20)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(76, 14)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Static Data"
+        '
         'cmdClear
         '
         Me.cmdClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdClear.Image = Global.DPSReporting.My.Resources.Resources.Paintbrush_1
         Me.cmdClear.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdClear.Location = New System.Drawing.Point(836, 614)
+        Me.cmdClear.Location = New System.Drawing.Point(846, 638)
         Me.cmdClear.Name = "cmdClear"
         Me.cmdClear.Size = New System.Drawing.Size(78, 51)
         Me.cmdClear.TabIndex = 20
@@ -713,7 +752,7 @@ Partial Class frmDataSetup
         Me.cmdDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdDelete.Image = Global.DPSReporting.My.Resources.Resources.db_remove
         Me.cmdDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdDelete.Location = New System.Drawing.Point(753, 614)
+        Me.cmdDelete.Location = New System.Drawing.Point(763, 638)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(78, 51)
         Me.cmdDelete.TabIndex = 19
@@ -726,7 +765,7 @@ Partial Class frmDataSetup
         Me.cmdEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdEdit.Image = Global.DPSReporting.My.Resources.Resources.file_edit
         Me.cmdEdit.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdEdit.Location = New System.Drawing.Point(669, 614)
+        Me.cmdEdit.Location = New System.Drawing.Point(679, 638)
         Me.cmdEdit.Name = "cmdEdit"
         Me.cmdEdit.Size = New System.Drawing.Size(78, 51)
         Me.cmdEdit.TabIndex = 18
@@ -739,7 +778,7 @@ Partial Class frmDataSetup
         Me.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdAdd.Image = Global.DPSReporting.My.Resources.Resources.db_add
         Me.cmdAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdAdd.Location = New System.Drawing.Point(585, 614)
+        Me.cmdAdd.Location = New System.Drawing.Point(595, 638)
         Me.cmdAdd.Name = "cmdAdd"
         Me.cmdAdd.Size = New System.Drawing.Size(78, 51)
         Me.cmdAdd.TabIndex = 17
@@ -770,7 +809,7 @@ Partial Class frmDataSetup
         Me.cmdClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdClose.Image = Global.DPSReporting.My.Resources.Resources.Log_Off
         Me.cmdClose.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdClose.Location = New System.Drawing.Point(920, 614)
+        Me.cmdClose.Location = New System.Drawing.Point(930, 638)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(78, 51)
         Me.cmdClose.TabIndex = 7
@@ -788,22 +827,11 @@ Partial Class frmDataSetup
         Me.lblDataSetupID.TabIndex = 10
         Me.lblDataSetupID.Visible = False
         '
-        'chkCurrency
-        '
-        Me.chkCurrency.AutoSize = True
-        Me.chkCurrency.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkCurrency.Location = New System.Drawing.Point(303, 439)
-        Me.chkCurrency.Name = "chkCurrency"
-        Me.chkCurrency.Size = New System.Drawing.Size(107, 18)
-        Me.chkCurrency.TabIndex = 32
-        Me.chkCurrency.Text = "CurrencyField"
-        Me.chkCurrency.UseVisualStyleBackColor = True
-        '
         'frmDataSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1011, 668)
+        Me.ClientSize = New System.Drawing.Size(1011, 778)
         Me.Controls.Add(Me.lblDataSetupID)
         Me.Controls.Add(Me.cmdClear)
         Me.Controls.Add(Me.cmdDelete)
@@ -826,13 +854,13 @@ Partial Class frmDataSetup
         Me.GroupBox7.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         CType(Me.dgridDataSetup, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -902,4 +930,6 @@ Partial Class frmDataSetup
     Friend WithEvents txtOldDateFmt As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents chkCurrency As System.Windows.Forms.CheckBox
+    Friend WithEvents rbDataType5 As System.Windows.Forms.RadioButton
+    Friend WithEvents chkCheckNmSeparator As System.Windows.Forms.CheckBox
 End Class

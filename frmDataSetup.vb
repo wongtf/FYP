@@ -91,12 +91,13 @@ Public Class frmDataSetup
         RefreshGrid()
         RefreshDataFldNameCombo()
     End Sub
+    
 
     Private Sub RefreshGrid()
         Try
-            Dim myconn As oledb.oledbConnection = New oledb.oledbConnection(gszConnString)
+            Dim myconn As OleDb.OleDbConnection = New OleDb.OleDbConnection(gszConnString)
             Dim strSQL As String = "SELECT * FROM DataSetup Where ds_id=" & dwDSetupID & " ORDER By data_fldid"
-            Dim daDataSetup As oledb.oledbDataAdapter = New oledb.oledbDataAdapter(strSQL, myconn)
+            Dim daDataSetup As OleDb.OleDbDataAdapter = New OleDb.OleDbDataAdapter(strSQL, myconn)
             Dim dsDataSetup As DataSet = New DataSet()
 
             'Create a DataTable
@@ -115,13 +116,13 @@ Public Class frmDataSetup
     End Sub
 
     Private Sub RefreshDataFldNameCombo()
-        Dim myconn As New oledb.oledbConnection()
+        Dim myconn As New OleDb.OleDbConnection()
         Try
             Dim dwi As Integer = 0
             myconn.ConnectionString = gszConnString
             myconn.Open()
 
-            Dim myCmd As New oledb.oledbCommand()
+            Dim myCmd As New OleDb.OleDbCommand()
             myCmd.Connection = myconn
             Dim datareader As OleDb.OleDbDataReader = Nothing
             Dim szDataFldName As String
@@ -161,6 +162,8 @@ Public Class frmDataSetup
         chkCurrency.Checked = False
         txtConditionFld.Text = ""
         txtReplValue.Text = ""
+        'add new for Name Separator 08/02/2013 azuwa kasnan
+        'chkCheckNmSeparator.Checked = False
     End Sub
 
     Private Sub dgridDataSetup_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgridDataSetup.CellMouseClick
@@ -205,6 +208,9 @@ Public Class frmDataSetup
                         txtCompositeFld.Text = dgridDataSetup(9, e.RowIndex).Value
                     Case 3
                         rbDataType3.Checked = True
+                    Case 5
+                        rbDataType5.Checked = True
+                        txtCompositeFld.Text = dgridDataSetup(9, e.RowIndex).Value
                 End Select
                 cmbOutputFormat.Text = dgridDataSetup(10, e.RowIndex).Value
                 txtReplCharCode.Text = IIf(IsDBNull(dgridDataSetup(13, e.RowIndex).Value), "", dgridDataSetup(13, e.RowIndex).Value)
@@ -213,6 +219,9 @@ Public Class frmDataSetup
                 txtOldDateFmt.Text = IIf(IsDBNull(dgridDataSetup(16, e.RowIndex).Value), "", dgridDataSetup(16, e.RowIndex).Value)
                 txtNewDateFormat.Text = IIf(IsDBNull(dgridDataSetup(17, e.RowIndex).Value), "", dgridDataSetup(17, e.RowIndex).Value)
                 chkCurrency.Checked = CBool(dgridDataSetup(18, e.RowIndex).Value)
+
+                'add new for Name Separator 08/02/2013 azuwa kasnan
+                'chkCheckNmSeparator.Checked = CBool(dgridDataSetup(19, e.RowIndex).Value)
             End If
         Catch ex As Exception
             MessageBox.Show("dgridDataSetup_CellMouseClick: Exception-" & ex.Message())
@@ -225,6 +234,7 @@ Public Class frmDataSetup
 
     Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         AddModifyDataFld(True)
+        RefreshDataFldNameCombo()
     End Sub
 
     Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEdit.Click
@@ -257,6 +267,10 @@ Public Class frmDataSetup
             Dim dwReturnRow As Integer
             Dim dwGridRow As Integer = 0
             Dim szAuditText As String = ""
+            Dim szArithmeticFld As String = ""
+
+            'add new for Name Separator 08/02/2013 azuwa kasnan
+            'Dim boolCheckNameSeparator As Integer
 
             szDataFldName = Trim(txtDataFldName.Text)
             If rbDataType0.Checked = True Then
@@ -279,6 +293,11 @@ Public Class frmDataSetup
                 szCompositeData = txtCompositeFld.Text
             ElseIf rbDataType3.Checked = True Then
                 dwDataType = 3
+            ElseIf rbDataType5.Checked = True Then
+                dwDataType = 5
+                szCompositeData = txtCompositeFld.Text
+                'szArithmeticFld = Trim(txtCompositeFld.Text)
+                'szArithmeticFld = Trim(txtArithmeticFld.Text)
             End If
             szOutputFormat = Trim(cmbOutputFormat.Text)
             If chkConditionFld.Checked = True Then
@@ -292,6 +311,9 @@ Public Class frmDataSetup
             boolCurrencyFld = chkCurrency.Checked
             szDateFormat = Trim(txtNewDateFormat.Text)
             szOldDateFormat = Trim(txtOldDateFmt.Text)
+
+            'add new for Name Separator 08/02/2013 azuwa kasnan
+            'boolCheckNameSeparator = chkCheckNmSeparator.Checked
 
             If boolAddFlag = True Then  'add new record
                 'check the last row datafld id
@@ -393,4 +415,6 @@ Public Class frmDataSetup
 
     End Sub
 
+
+ 
 End Class
