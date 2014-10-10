@@ -1,4 +1,4 @@
-Public Class frmUploadFileSetup
+Public Class frmUserDC
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -29,50 +29,77 @@ Public Class frmUploadFileSetup
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
-    Friend WithEvents ImageList As System.Windows.Forms.ImageList
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lbid As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
+    Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
+    Friend WithEvents ToolBar As System.Windows.Forms.ToolBar
+    Friend WithEvents tbrSeparator0 As System.Windows.Forms.ToolBarButton
     Friend WithEvents tbrAdd As System.Windows.Forms.ToolBarButton
     Friend WithEvents tbrDel As System.Windows.Forms.ToolBarButton
     Friend WithEvents tbrRefresh As System.Windows.Forms.ToolBarButton
-    Friend WithEvents tbrExit As System.Windows.Forms.ToolBarButton
-    Friend WithEvents ToolBar As System.Windows.Forms.ToolBar
     Friend WithEvents tbrSeparator1 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents tbrSeparator0 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents btnSave As System.Windows.Forms.Button
-    Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents ContextMenu1 As System.Windows.Forms.ContextMenu
-    Friend WithEvents lbid As System.Windows.Forms.Label
-    Friend WithEvents FolderBrowserDialog As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents txtHeader As System.Windows.Forms.TextBox
-    Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
-    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
-    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents mnuUploadFileSetupAdd As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuUploadFileSetupDelete As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRefreshList As System.Windows.Forms.MenuItem
-    Friend WithEvents txtFldIdentifier As System.Windows.Forms.TextBox
-    Friend WithEvents txtFooter As System.Windows.Forms.TextBox
-    Friend WithEvents txtDetails As System.Windows.Forms.TextBox
-    Friend WithEvents txtSetupName As System.Windows.Forms.TextBox
+    Friend WithEvents tbrExit As System.Windows.Forms.ToolBarButton
+    Friend WithEvents ImageList As System.Windows.Forms.ImageList
+    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents txtLogin As System.Windows.Forms.TextBox
+    Friend WithEvents chkBarred As System.Windows.Forms.CheckBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents cbGroup As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents btnGrant As System.Windows.Forms.Button
+    Friend WithEvents btnReset As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label31 As System.Windows.Forms.Label
+    Friend WithEvents NumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents NumericUpDownPass As System.Windows.Forms.NumericUpDown
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents ContextMenu1 As System.Windows.Forms.ContextMenu
+    Friend WithEvents mnuBankAdd As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuBankDelete As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuRefreshList As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUploadFileSetup))
-        Me.TreeView1 = New System.Windows.Forms.TreeView
-        Me.ContextMenu1 = New System.Windows.Forms.ContextMenu
-        Me.mnuUploadFileSetupAdd = New System.Windows.Forms.MenuItem
-        Me.mnuUploadFileSetupDelete = New System.Windows.Forms.MenuItem
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem
-        Me.mnuRefreshList = New System.Windows.Forms.MenuItem
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserDC))
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.Label8 = New System.Windows.Forms.Label
+        Me.NumericUpDownPass = New System.Windows.Forms.NumericUpDown
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.Label31 = New System.Windows.Forms.Label
+        Me.NumericUpDown = New System.Windows.Forms.NumericUpDown
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.btnGrant = New System.Windows.Forms.Button
+        Me.btnReset = New System.Windows.Forms.Button
+        Me.cbGroup = New System.Windows.Forms.ComboBox
+        Me.Label15 = New System.Windows.Forms.Label
+        Me.chkBarred = New System.Windows.Forms.CheckBox
+        Me.Label12 = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.lbid = New System.Windows.Forms.Label
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.btnCancel = New System.Windows.Forms.Button
+        Me.btnSave = New System.Windows.Forms.Button
+        Me.txtLogin = New System.Windows.Forms.TextBox
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.txtName = New System.Windows.Forms.TextBox
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ToolBar = New System.Windows.Forms.ToolBar
         Me.tbrSeparator0 = New System.Windows.Forms.ToolBarButton
@@ -82,70 +109,290 @@ Public Class frmUploadFileSetup
         Me.tbrSeparator1 = New System.Windows.Forms.ToolBarButton
         Me.tbrExit = New System.Windows.Forms.ToolBarButton
         Me.ImageList = New System.Windows.Forms.ImageList(Me.components)
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.txtSetupName = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtFooter = New System.Windows.Forms.TextBox
-        Me.txtDetails = New System.Windows.Forms.TextBox
-        Me.txtFldIdentifier = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.lbid = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.btnCancel = New System.Windows.Forms.Button
-        Me.btnSave = New System.Windows.Forms.Button
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.txtHeader = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.TreeView1 = New System.Windows.Forms.TreeView
+        Me.ContextMenu1 = New System.Windows.Forms.ContextMenu
+        Me.mnuBankAdd = New System.Windows.Forms.MenuItem
+        Me.mnuBankDelete = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.mnuRefreshList = New System.Windows.Forms.MenuItem
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.Panel1.SuspendLayout()
+        CType(Me.NumericUpDownPass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TreeView1
+        'Panel1
         '
-        Me.TreeView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TreeView1.BackColor = System.Drawing.Color.White
-        Me.TreeView1.ContextMenu = Me.ContextMenu1
-        Me.TreeView1.FullRowSelect = True
-        Me.TreeView1.HideSelection = False
-        Me.TreeView1.ImageIndex = 0
-        Me.TreeView1.ImageList = Me.ImageList1
-        Me.TreeView1.Location = New System.Drawing.Point(-2, 44)
-        Me.TreeView1.Name = "TreeView1"
-        Me.TreeView1.SelectedImageIndex = 0
-        Me.TreeView1.ShowRootLines = False
-        Me.TreeView1.Size = New System.Drawing.Size(183, 417)
-        Me.TreeView1.TabIndex = 0
+        Me.Panel1.BackColor = System.Drawing.Color.LightSlateGray
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label7)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.NumericUpDownPass)
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.Label31)
+        Me.Panel1.Controls.Add(Me.NumericUpDown)
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.btnGrant)
+        Me.Panel1.Controls.Add(Me.btnReset)
+        Me.Panel1.Controls.Add(Me.cbGroup)
+        Me.Panel1.Controls.Add(Me.Label15)
+        Me.Panel1.Controls.Add(Me.chkBarred)
+        Me.Panel1.Controls.Add(Me.Label12)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.lbid)
+        Me.Panel1.Controls.Add(Me.GroupBox1)
+        Me.Panel1.Controls.Add(Me.btnCancel)
+        Me.Panel1.Controls.Add(Me.btnSave)
+        Me.Panel1.Controls.Add(Me.txtLogin)
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.txtName)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Location = New System.Drawing.Point(182, 44)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(510, 435)
+        Me.Panel1.TabIndex = 2
         '
-        'ContextMenu1
+        'Label7
         '
-        Me.ContextMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuUploadFileSetupAdd, Me.mnuUploadFileSetupDelete, Me.MenuItem3, Me.mnuRefreshList})
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(240, 150)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(38, 17)
+        Me.Label7.TabIndex = 68
+        Me.Label7.Text = "days"
         '
-        'mnuUploadFileSetupAdd
+        'Label8
         '
-        Me.mnuUploadFileSetupAdd.Index = 0
-        Me.mnuUploadFileSetupAdd.Text = "Add UploadFile Setup"
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(26, 150)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(134, 17)
+        Me.Label8.TabIndex = 67
+        Me.Label8.Text = "Password Expiry Interval"
         '
-        'mnuUploadFileSetupDelete
+        'NumericUpDownPass
         '
-        Me.mnuUploadFileSetupDelete.Index = 1
-        Me.mnuUploadFileSetupDelete.Text = "Delete UploadFile Setup"
+        Me.NumericUpDownPass.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumericUpDownPass.Increment = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.NumericUpDownPass.Location = New System.Drawing.Point(170, 146)
+        Me.NumericUpDownPass.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
+        Me.NumericUpDownPass.Name = "NumericUpDownPass"
+        Me.NumericUpDownPass.Size = New System.Drawing.Size(62, 21)
+        Me.NumericUpDownPass.TabIndex = 3
+        Me.NumericUpDownPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.NumericUpDownPass.Value = New Decimal(New Integer() {30, 0, 0, 0})
         '
-        'MenuItem3
+        'Label6
         '
-        Me.MenuItem3.Index = 2
-        Me.MenuItem3.Text = "-"
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(240, 180)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(38, 17)
+        Me.Label6.TabIndex = 65
+        Me.Label6.Text = "days"
         '
-        'mnuRefreshList
+        'Label31
         '
-        Me.mnuRefreshList.Index = 3
-        Me.mnuRefreshList.Text = "Refresh List"
+        Me.Label31.ForeColor = System.Drawing.Color.White
+        Me.Label31.Location = New System.Drawing.Point(26, 180)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(134, 17)
+        Me.Label31.TabIndex = 64
+        Me.Label31.Text = "Dormant Period"
+        '
+        'NumericUpDown
+        '
+        Me.NumericUpDown.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumericUpDown.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NumericUpDown.Location = New System.Drawing.Point(170, 176)
+        Me.NumericUpDown.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown.Name = "NumericUpDown"
+        Me.NumericUpDown.Size = New System.Drawing.Size(62, 21)
+        Me.NumericUpDown.TabIndex = 4
+        Me.NumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.NumericUpDown.Value = New Decimal(New Integer() {30, 0, 0, 0})
+        '
+        'Label5
+        '
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(26, 280)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(316, 26)
+        Me.Label5.TabIndex = 58
+        Me.Label5.Text = "For user who have their account revoke, click on Grant button to reactivate the a" & _
+            "ccount with default password."
+        '
+        'Label4
+        '
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(26, 246)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(306, 26)
+        Me.Label4.TabIndex = 57
+        Me.Label4.Text = "For user who forget their password, click on Reset button to set to default passw" & _
+            "ord."
+        '
+        'btnGrant
+        '
+        Me.btnGrant.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnGrant.Enabled = False
+        Me.btnGrant.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGrant.ForeColor = System.Drawing.Color.White
+        Me.btnGrant.Location = New System.Drawing.Point(368, 278)
+        Me.btnGrant.Name = "btnGrant"
+        Me.btnGrant.Size = New System.Drawing.Size(83, 23)
+        Me.btnGrant.TabIndex = 7
+        Me.btnGrant.Text = "&Grant"
+        Me.btnGrant.UseVisualStyleBackColor = False
+        '
+        'btnReset
+        '
+        Me.btnReset.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnReset.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReset.ForeColor = System.Drawing.Color.White
+        Me.btnReset.Location = New System.Drawing.Point(368, 242)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(83, 23)
+        Me.btnReset.TabIndex = 6
+        Me.btnReset.Text = "&Reset"
+        Me.btnReset.UseVisualStyleBackColor = False
+        '
+        'cbGroup
+        '
+        Me.cbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbGroup.Items.AddRange(New Object() {"PLAINTEXT", "DCQSS NATIVE"})
+        Me.cbGroup.Location = New System.Drawing.Point(170, 116)
+        Me.cbGroup.Name = "cbGroup"
+        Me.cbGroup.Size = New System.Drawing.Size(221, 21)
+        Me.cbGroup.TabIndex = 2
+        '
+        'Label15
+        '
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(26, 120)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(134, 23)
+        Me.Label15.TabIndex = 54
+        Me.Label15.Text = "Access Group *"
+        '
+        'chkBarred
+        '
+        Me.chkBarred.Location = New System.Drawing.Point(170, 204)
+        Me.chkBarred.Name = "chkBarred"
+        Me.chkBarred.Size = New System.Drawing.Size(15, 24)
+        Me.chkBarred.TabIndex = 5
+        '
+        'Label12
+        '
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(26, 210)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(134, 23)
+        Me.Label12.TabIndex = 51
+        Me.Label12.Text = "Is this user barred?"
+        '
+        'Label9
+        '
+        Me.Label9.ForeColor = System.Drawing.Color.Brown
+        Me.Label9.Location = New System.Drawing.Point(28, 348)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(171, 15)
+        Me.Label9.TabIndex = 18
+        Me.Label9.Text = "*  Mandatory field"
+        '
+        'lbid
+        '
+        Me.lbid.ForeColor = System.Drawing.Color.White
+        Me.lbid.Location = New System.Drawing.Point(437, 8)
+        Me.lbid.Name = "lbid"
+        Me.lbid.Size = New System.Drawing.Size(65, 23)
+        Me.lbid.TabIndex = 17
+        Me.lbid.Text = "Id"
+        Me.lbid.Visible = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Location = New System.Drawing.Point(30, 318)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(422, 8)
+        Me.GroupBox1.TabIndex = 12
+        Me.GroupBox1.TabStop = False
+        '
+        'btnCancel
+        '
+        Me.btnCancel.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnCancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.ForeColor = System.Drawing.Color.White
+        Me.btnCancel.Location = New System.Drawing.Point(370, 348)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(83, 23)
+        Me.btnCancel.TabIndex = 9
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = False
+        '
+        'btnSave
+        '
+        Me.btnSave.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnSave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.ForeColor = System.Drawing.Color.White
+        Me.btnSave.Location = New System.Drawing.Point(284, 348)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(83, 23)
+        Me.btnSave.TabIndex = 8
+        Me.btnSave.Text = "&Save"
+        Me.btnSave.UseVisualStyleBackColor = False
+        '
+        'txtLogin
+        '
+        Me.txtLogin.Location = New System.Drawing.Point(170, 86)
+        Me.txtLogin.MaxLength = 10
+        Me.txtLogin.Name = "txtLogin"
+        Me.txtLogin.Size = New System.Drawing.Size(221, 21)
+        Me.txtLogin.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(26, 90)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(134, 23)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Login id *"
+        '
+        'txtName
+        '
+        Me.txtName.Location = New System.Drawing.Point(170, 55)
+        Me.txtName.MaxLength = 50
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(221, 21)
+        Me.txtName.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(26, 58)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(134, 23)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Name *"
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.SandyBrown
+        Me.Label1.Location = New System.Drawing.Point(26, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(188, 23)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "User Information:"
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
         '
         'ImageList1
         '
@@ -162,8 +409,8 @@ Public Class frmUploadFileSetup
         Me.ToolBar.Location = New System.Drawing.Point(0, 0)
         Me.ToolBar.Name = "ToolBar"
         Me.ToolBar.ShowToolTips = True
-        Me.ToolBar.Size = New System.Drawing.Size(725, 44)
-        Me.ToolBar.TabIndex = 2
+        Me.ToolBar.Size = New System.Drawing.Size(690, 44)
+        Me.ToolBar.TabIndex = 0
         '
         'tbrSeparator0
         '
@@ -208,197 +455,61 @@ Public Class frmUploadFileSetup
         Me.ImageList.Images.SetKeyName(2, "")
         Me.ImageList.Images.SetKeyName(3, "")
         '
-        'Panel1
+        'TreeView1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightSlateGray
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.txtSetupName)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.txtFooter)
-        Me.Panel1.Controls.Add(Me.txtDetails)
-        Me.Panel1.Controls.Add(Me.txtFldIdentifier)
-        Me.Panel1.Controls.Add(Me.Label13)
-        Me.Panel1.Controls.Add(Me.lbid)
-        Me.Panel1.Controls.Add(Me.GroupBox1)
-        Me.Panel1.Controls.Add(Me.btnCancel)
-        Me.Panel1.Controls.Add(Me.btnSave)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.txtHeader)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(182, 44)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(543, 380)
-        Me.Panel1.TabIndex = 0
+        Me.TreeView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TreeView1.BackColor = System.Drawing.Color.White
+        Me.TreeView1.ContextMenu = Me.ContextMenu1
+        Me.TreeView1.FullRowSelect = True
+        Me.TreeView1.ImageIndex = 0
+        Me.TreeView1.ImageList = Me.ImageList1
+        Me.TreeView1.Location = New System.Drawing.Point(-2, 44)
+        Me.TreeView1.Name = "TreeView1"
+        Me.TreeView1.SelectedImageIndex = 0
+        Me.TreeView1.ShowRootLines = False
+        Me.TreeView1.Size = New System.Drawing.Size(183, 481)
+        Me.TreeView1.TabIndex = 1
         '
-        'txtSetupName
+        'ContextMenu1
         '
-        Me.txtSetupName.Location = New System.Drawing.Point(217, 34)
-        Me.txtSetupName.MaxLength = 200
-        Me.txtSetupName.Name = "txtSetupName"
-        Me.txtSetupName.Size = New System.Drawing.Size(294, 21)
-        Me.txtSetupName.TabIndex = 0
+        Me.ContextMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBankAdd, Me.mnuBankDelete, Me.MenuItem3, Me.mnuRefreshList})
         '
-        'Label4
+        'mnuBankAdd
         '
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(24, 34)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(100, 23)
-        Me.Label4.TabIndex = 34
-        Me.Label4.Text = "Setup Name "
+        Me.mnuBankAdd.Index = 0
+        Me.mnuBankAdd.Text = "Add User"
         '
-        'txtFooter
+        'mnuBankDelete
         '
-        Me.txtFooter.Location = New System.Drawing.Point(217, 205)
-        Me.txtFooter.MaxLength = 0
-        Me.txtFooter.Multiline = True
-        Me.txtFooter.Name = "txtFooter"
-        Me.txtFooter.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtFooter.Size = New System.Drawing.Size(294, 56)
-        Me.txtFooter.TabIndex = 3
+        Me.mnuBankDelete.Index = 1
+        Me.mnuBankDelete.Text = "Delete User"
         '
-        'txtDetails
+        'MenuItem3
         '
-        Me.txtDetails.Location = New System.Drawing.Point(217, 138)
-        Me.txtDetails.MaxLength = 0
-        Me.txtDetails.Multiline = True
-        Me.txtDetails.Name = "txtDetails"
-        Me.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtDetails.Size = New System.Drawing.Size(294, 54)
-        Me.txtDetails.TabIndex = 2
+        Me.MenuItem3.Index = 2
+        Me.MenuItem3.Text = "-"
         '
-        'txtFldIdentifier
+        'mnuRefreshList
         '
-        Me.txtFldIdentifier.Location = New System.Drawing.Point(217, 275)
-        Me.txtFldIdentifier.MaxLength = 200
-        Me.txtFldIdentifier.Name = "txtFldIdentifier"
-        Me.txtFldIdentifier.Size = New System.Drawing.Size(294, 21)
-        Me.txtFldIdentifier.TabIndex = 5
+        Me.mnuRefreshList.Index = 3
+        Me.mnuRefreshList.Text = "Refresh List"
         '
-        'Label13
+        'PictureBox1
         '
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(24, 275)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(100, 23)
-        Me.Label13.TabIndex = 30
-        Me.Label13.Text = "Field Identifier"
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(568, 8)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(102, 29)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.TabIndex = 4
+        Me.PictureBox1.TabStop = False
         '
-        'lbid
-        '
-        Me.lbid.ForeColor = System.Drawing.Color.White
-        Me.lbid.Location = New System.Drawing.Point(442, 1)
-        Me.lbid.Name = "lbid"
-        Me.lbid.Size = New System.Drawing.Size(65, 23)
-        Me.lbid.TabIndex = 17
-        Me.lbid.Text = "Id"
-        Me.lbid.Visible = False
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Location = New System.Drawing.Point(28, 306)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(479, 10)
-        Me.GroupBox1.TabIndex = 12
-        Me.GroupBox1.TabStop = False
-        '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnCancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(424, 329)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(83, 23)
-        Me.btnCancel.TabIndex = 8
-        Me.btnCancel.Text = "&Close"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'btnSave
-        '
-        Me.btnSave.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnSave.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.ForeColor = System.Drawing.Color.White
-        Me.btnSave.Location = New System.Drawing.Point(338, 329)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(83, 23)
-        Me.btnSave.TabIndex = 7
-        Me.btnSave.Text = "&Save"
-        Me.btnSave.UseVisualStyleBackColor = False
-        '
-        'Label5
-        '
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(24, 205)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 20)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "Footer"
-        '
-        'Label3
-        '
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(24, 138)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 23)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Details"
-        '
-        'txtHeader
-        '
-        Me.txtHeader.Location = New System.Drawing.Point(217, 74)
-        Me.txtHeader.MaxLength = 0
-        Me.txtHeader.Multiline = True
-        Me.txtHeader.Name = "txtHeader"
-        Me.txtHeader.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtHeader.Size = New System.Drawing.Size(294, 52)
-        Me.txtHeader.TabIndex = 1
-        '
-        'Label2
-        '
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(24, 74)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(100, 23)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Header"
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.SandyBrown
-        Me.Label1.Location = New System.Drawing.Point(12, 8)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(188, 23)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Upload File Details Setup:"
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.ContainerControl = Me
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.Filter = "Bitmap files|*.bmp"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(497, 9)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(207, 25)
-        Me.Label6.TabIndex = 4
-        Me.Label6.Text = "Upload File Details"
-        '
-        'frmUploadFileSetup
+        'frmUser
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
-        Me.BackColor = System.Drawing.Color.Gray
-        Me.ClientSize = New System.Drawing.Size(725, 421)
-        Me.Controls.Add(Me.Label6)
+        Me.ClientSize = New System.Drawing.Size(690, 470)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ToolBar)
         Me.Controls.Add(Me.TreeView1)
@@ -406,12 +517,15 @@ Public Class frmUploadFileSetup
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
-        Me.Name = "frmUploadFileSetup"
+        Me.Name = "frmUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Upload File Setup"
+        Me.Text = " User"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.NumericUpDownPass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -422,12 +536,12 @@ Public Class frmUploadFileSetup
     Dim boolLoaded As Boolean
     Dim boolChanged As Boolean
 
-    Private Sub frmUploadFileSetup_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        UpdateAuditLog("Define upload file format", "Audit Log")
+    Private Sub frmUser_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        UpdateAuditLog("Define User Profile", "Audit Log")
         boolLoaded = False
     End Sub
 
-    Private Sub frmUploadFileSetup_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
+    Private Sub frmUser_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
 
         Try
             If (boolLoaded = True) Then
@@ -439,7 +553,8 @@ Public Class frmUploadFileSetup
             lbid.Text = NEW_ID
 
             Me.Refresh()
-            LoadAllUFSetup()
+            LoadAllUser()
+            LoadAllGroup()
 
             If (TreeView1.GetNodeCount(False) > 0) Then
                 TreeView1.SelectedNode = TreeView1.Nodes(0)
@@ -448,17 +563,17 @@ Public Class frmUploadFileSetup
             boolChanged = False
 
         Catch ex As Exception
-            MessageBox.Show("frmUploadFileSetup_Activated: Exception-" & ex.Message)
+            MessageBox.Show("frmUser_Activated: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub frmUploadFileSetup_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+    Private Sub frmUser_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
 
         Select Case e.KeyCode
             Case Keys.Escape
                 If (boolChanged = True) Then
-                    If (MessageBox.Show("UploadFileSetup information has not been saved. Do you wish to discard the changes and proceed with the operation?", "UploadFileSetup", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
+                    If (MessageBox.Show("User information has not been saved. Do you wish to discard the changes and proceed with the operation?", "User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
                         Exit Sub
                     End If
                 End If
@@ -472,13 +587,14 @@ Public Class frmUploadFileSetup
                 boolChanged = True
         End Select
 
+
     End Sub
 
     Private Sub ToolBar_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles ToolBar.ButtonClick
 
         Try
             If (boolChanged = True) Then
-                If (MessageBox.Show("UploadFile setup information has not been saved. Do you wish to discard the changes and proceed with the operation?", "UploadFileSetup", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
+                If (MessageBox.Show("User information has not been saved. Do you wish to discard the changes and proceed with the operation?", "User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
                     Exit Sub
                 End If
             End If
@@ -495,17 +611,16 @@ Public Class frmUploadFileSetup
                         Exit Sub
                     End If
 
-                    Dim szSetupName As String
-                    szSetupName = "New Setup"
+                    Dim szUserName As String
+                    szUserName = NEW_USER
 
-                    Dim nodp As New Windows.Forms.TreeNode(szSetupName, 0, 1)
+                    Dim nodp As New Windows.Forms.TreeNode(szUserName, 0, 1)
                     nodp.Tag = NEW_ID
                     TreeView1.Nodes.Add(nodp)
                     dwIndex = nodp.Index
                     TreeView1.SelectedNode = TreeView1.Nodes(dwIndex)
-                    nodp = Nothing
 
-                    AddNewUploadFileSetup()
+                    AddNewUser()
 
                 Case "Del"
                     If (szId = "") Then
@@ -518,30 +633,35 @@ Public Class frmUploadFileSetup
                         Exit Sub
                     End If
 
+                    If (szId = UserInfo.Id) Then
+                        MessageBox.Show("You are not allowed to delete the currently active user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
+                    End If
+
                     If (MessageBox.Show("Are you sure you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.No) Then
                         Exit Sub
                     End If
 
                     Dim szSQL As String
                     Dim dwReturnRow As Integer
-                    szSQL = "UPDATE UploadFileDetails SET uf_deleted=-1 WHERE uf_id = " & szId
+                    szSQL = "UPDATE Users SET usr_deleted=-1 WHERE usr_id = " & szId
 
                     dwReturnRow = ExecuteSQL(szSQL)
                     Select Case dwReturnRow
                         Case -1
-                            MessageBox.Show("Error occur when deleting UploadFile setup record.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            MessageBox.Show("Error occur when deleting user record.", "User", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Case 0
-                            MessageBox.Show("UploadFileSetup record not found. No record deleted.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            MessageBox.Show("User record not found. No record deleted.", "User", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Case Else
-                            MessageBox.Show("UploadFileSetup record has been deleted.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            UpdateAuditLog("Delete UploadFileSetup ID " & szId, "Setup")
+                            MessageBox.Show("User record has been deleted.", "User", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            UpdateAuditLog("Delete User ID " & szId, "Security")
                             TreeView1.SelectedNode.Remove()
                     End Select
 
                 Case "Refresh"
                     dwIndex = TreeView1.SelectedNode.Index
 
-                    LoadAllUFSetup()
+                    LoadAllUser()
                     Call RefreshInformation(szId)
                     TreeView1.SelectedNode = TreeView1.Nodes(dwIndex)
 
@@ -552,33 +672,33 @@ Public Class frmUploadFileSetup
 
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_ToolBar_ButtonClick: Exception-" & ex.Message)
+            'MessageBox.Show("frmUser_ToolBar_ButtonClick: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub LoadAllUFSetup()
+    Private Sub LoadAllUser()
 
         Try
             TreeView1.Nodes.Clear()
 
-            Dim szUploadFileSetupName As String
+            Dim szUserName As String
 
-            Dim myconn As New OleDb.OleDbConnection(gszConnString)
-            Dim strSQL As String = "SELECT * FROM UploadFileDetails WHERE uf_deleted=0 ORDER BY uf_name ASC"
+            Dim myconn As New oledb.oledbConnection(gszConnString)
+            Dim strSQL As String = "SELECT * FROM Users WHERE usr_bank_id=" & UserInfo.BankId & " AND usr_group_id <> 1 AND usr_deleted=0 Order by usr_name ASC"
 
-            Dim myCmd As New OleDb.OleDbCommand(strSQL, myconn)
-            Dim datareader As OleDb.OleDbDataReader = Nothing
+            Dim myCmd As New oledb.oledbCommand(strSQL, myconn)
+            Dim datareader As oledb.oledbDataReader = Nothing
 
             myconn.Open()
             datareader = myCmd.ExecuteReader()
             While datareader.Read()
 
-                If (IsDBNull(datareader("uf_id")) = False) Then
-                    szUploadFileSetupName = IIf(IsDBNull(datareader("uf_name")), "", datareader("uf_name"))
+                If (IsDBNull(datareader("usr_id")) = False) Then
+                    szUserName = IIf(IsDBNull(datareader("usr_name")), "", datareader("usr_name"))
 
-                    Dim nodp As TreeNode = New TreeNode(szUploadFileSetupName, 0, 1)
-                    nodp.Tag = datareader("uf_id")
+                    Dim nodp As New Windows.Forms.TreeNode(szUserName, 0, 1)
+                    nodp.Tag = datareader("usr_id")
                     TreeView1.Nodes.Add(nodp)
                 End If
 
@@ -587,7 +707,21 @@ Public Class frmUploadFileSetup
             myconn.Close()
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_LoadAllUploadFileSetup: Exception-" & ex.Message)
+            'MessageBox.Show("frmUser_LoadAllUser: Exception-" & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub LoadAllGroup()
+
+        Try
+            Dim szSQL As String
+            szSQL = "SELECT group_id, group_name FROM Groups WHERE group_id <> 1 AND group_deleted=0 ORDER BY groups.group_name ASC"
+
+            LoadTableCombo(cbGroup, szSQL)
+
+        Catch ex As Exception
+            MessageBox.Show("frmUser_LoadAllGroup: Exception-" & ex.Message)
         End Try
 
     End Sub
@@ -595,56 +729,65 @@ Public Class frmUploadFileSetup
     Private Sub RefreshInformation(ByVal szId As String)
 
         Try
+            ErrorProvider1.SetError(txtName, "")
+            ErrorProvider1.SetError(txtLogin, "")
+            ErrorProvider1.SetError(cbGroup, "")
+            ErrorProvider1.SetError(chkBarred, "")
+
             If (szId = "") Then
                 Exit Sub
             End If
 
-            Dim myconn As New OleDb.OleDbConnection(gszConnString)
-            Dim strSQL As String = "SELECT * FROM UploadFileDetails WHERE uf_id=" & szId & " AND uf_deleted=0 ORDER BY uf_name ASC"
+            Dim myconn As New oledb.oledbConnection(gszConnString)
+            Dim strSQL As String = "SELECT * FROM Users WHERE usr_id=" & szId & " AND usr_deleted=0 Order by usr_name ASC"
 
-            Dim myCmd As New OleDb.OleDbCommand(strSQL, myconn)
-            Dim datareader As OleDb.OleDbDataReader = Nothing
+            Dim myCmd As New oledb.oledbCommand(strSQL, myconn)
+            Dim datareader As oledb.oledbDataReader = Nothing
 
             myconn.Open()
             datareader = myCmd.ExecuteReader()
             While datareader.Read()
 
-                lbid.Text = IIf(IsDBNull(datareader("uf_id")), "", datareader("uf_id"))
-                txtSetupName.Text = IIf(IsDBNull(datareader("uf_name")), "", datareader("uf_name"))
-                txtHeader.Text = IIf(IsDBNull(datareader("uf_header")), "", datareader("uf_header"))
-                txtDetails.Text = IIf(IsDBNull(datareader("uf_details")), "", datareader("uf_details"))
-                txtFooter.Text = IIf(IsDBNull(datareader("uf_footer")), "", datareader("uf_footer"))
-                txtFldIdentifier.Text = IIf(IsDBNull(datareader("uf_check_field")), "", datareader("uf_check_field"))
+                lbid.Text = IIf(IsDBNull(datareader("usr_id")), "", datareader("usr_id"))
+                txtName.Text = IIf(IsDBNull(datareader("usr_name")), "", datareader("usr_name"))
+                txtLogin.Text = IIf(IsDBNull(datareader("usr_login_id")), "", datareader("usr_login_id"))
+
+                NumericUpDownPass.Value = IIf(IsDBNull(datareader("usr_expiry_period")), 0, datareader("usr_expiry_period"))
+                NumericUpDown.Value = IIf(IsDBNull(datareader("usr_dormant_period")), 0, datareader("usr_dormant_period"))
+
+                chkBarred.Checked = datareader("usr_barred")
+                cbGroup.SelectedIndex = FindComboItem(cbGroup, IIf(IsDBNull(datareader("usr_group_id")), FAIL_ID, datareader("usr_group_id")))
+                btnGrant.Enabled = datareader("usr_revoked")
+
                 Exit While
             End While
 
             myconn.Close()
 
         Catch ex As Exception
-            MessageBox.Show("frmUploadFileSetup_RefreshInformation: Exception-" & ex.Message)
+            MessageBox.Show("frmUser_RefreshInformation: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub AddNewUploadFileSetup()
+    Private Sub AddNewUser()
 
         Try
             lbid.Text = NEW_ID
-            txtSetupName.Text = ""
-            txtHeader.Text = ""
-            txtDetails.Text = ""
-            txtFooter.Text = ""
-            txtFldIdentifier.Text = ""
+            txtName.Text = ""
+            txtLogin.Text = ""
+            chkBarred.Checked = False
+            cbGroup.SelectedIndex = -1
 
-            txtSetupName.Focus()
+            txtName.Focus()
 
         Catch ex As Exception
-            MessageBox.Show("frmUploadFileSetup_AddNewUploadFileSetup: Exception-" & ex.Message)
+            MessageBox.Show("frmUser_AddNewUser: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Public Sub RemoveNewId()
+    Private Sub RemoveNewId()
 
         Try
             Dim dwIndex As Integer
@@ -658,7 +801,7 @@ Public Class frmUploadFileSetup
             Next
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_RemoveNewId: Exception-" & ex.Message)
+            'MessageBox.Show("frmUser_RemoveNewId: Exception-" & ex.Message)
         End Try
 
     End Sub
@@ -678,10 +821,8 @@ Public Class frmUploadFileSetup
                 RefreshInformation(szId)
             End If
 
-            Close()
-
         Catch ex As Exception
-            MessageBox.Show("frmUploadFileSetup_btnCancel_Click: Exception-" & ex.Message)
+            MessageBox.Show("frmUser_btnCancel_Click: Exception-" & ex.Message)
         Finally
             Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         End Try
@@ -689,107 +830,107 @@ Public Class frmUploadFileSetup
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim myconn As New OleDb.OleDbConnection(gszConnString)
 
         Try
-            Dim boolNew As Boolean = False
-
             Dim szId As String
             szId = lbid.Text
 
-            ErrorProvider1.SetError(txtSetupName, "")
-            ErrorProvider1.SetError(txtFldIdentifier, "")
+            ErrorProvider1.SetError(txtName, "")
+            ErrorProvider1.SetError(txtLogin, "")
+            ErrorProvider1.SetError(cbGroup, "")
+            ErrorProvider1.SetError(chkBarred, "")
 
             If (szId = "") Then
                 Exit Sub
             End If
 
-            If (txtSetupName.Text = "") Then
-                ErrorProvider1.SetError(txtFldIdentifier, "Upload File Setup Name cannot be blank.")
+            If (txtName.Text = "") Then
+                ErrorProvider1.SetError(txtName, "User name cannot be blank.")
                 Exit Sub
             End If
 
-            If (txtFldIdentifier.Text = "") Then
-                ErrorProvider1.SetError(txtFldIdentifier, "Field Identifier cannot be blank.")
+            If (txtLogin.Text = "") Then
+                ErrorProvider1.SetError(txtLogin, "Login id cannot be blank.")
+                Exit Sub
+            End If
+
+            If (cbGroup.SelectedIndex = -1) Then
+                ErrorProvider1.SetError(cbGroup, "Access group cannot be blank.")
+                Exit Sub
+            End If
+
+            If (chkBarred.Checked = True) And (szId = UserInfo.Id) Then
+                ErrorProvider1.SetError(chkBarred, "User is not allowed to barred himself/herself from the system.")
                 Exit Sub
             End If
 
             Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
 
+            Dim myconn As New oledb.oledbConnection(gszConnString)
             Dim myCmd As New OleDb.OleDbCommand
             myCmd.Connection = myconn
             Dim dwReturnRow As Integer
 
-            Dim szSetupName As String
-            Dim szHeader As String
-            Dim szDetails As String
-            Dim szFooter As String
-            Dim szFldIdentifier As String
-            Dim dwCount As Integer
+            Dim szUserName As String
+            Dim szLogin As String
+            Dim dwBarred As Integer
+            Dim lngGroup As Long
+            Dim dwExpiry As Integer
+            Dim dwDormant As Integer
 
-            szSetupName = txtSetupName.Text
-            szHeader = txtHeader.Text
-            szDetails = txtDetails.Text
-            szFooter = txtFooter.Text
-            szFldIdentifier = txtFldIdentifier.Text
+            szUserName = txtName.Text
+            szLogin = txtLogin.Text
+            dwBarred = IIf(chkBarred.Checked = True, -1, 0)
+            dwExpiry = NumericUpDownPass.Value
+            dwDormant = NumericUpDown.Value
+            lngGroup = FindComboId(cbGroup, cbGroup.SelectedIndex)    'usr_group_id
 
             myconn.Open()
 
             If (szId = NEW_ID) Then
-                boolNew = True
-                dwCount = GetCountSQL("SELECT * FROM UploadFileDetails where uf_name='" & szSetupName & "'")
-                If dwCount <= 0 Then
+                Dim CryptographyFactory As New CryptoFactory
+                Dim Cryptographer As ICrypto = CryptographyFactory.MakeCryptographer("rijndael")
 
-                    myCmd.CommandText = "INSERT INTO UploadFileDetails (job_bank_id, uf_name, uf_header, uf_details, uf_footer, uf_check_field, uf_deleted) VALUES (" & _
-                                        BankInfo.Id & ", '" & szSetupName & "', '" & szHeader & "', '" & szDetails & "', '" & szFooter & "', '" & szFldIdentifier & "',0)"
-                Else
-                    MessageBox.Show("UploadFile Setup name already exists.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+                Dim szCipher As String = Cryptographer.Encrypt(DEFAULT_PASSWORD)
+
+                myCmd.CommandText = "INSERT INTO Users (usr_bank_id, usr_login_id, usr_name, usr_password, usr_barred, usr_group_id, usr_expiry_period, usr_dormant_period, usr_last_login) VALUES (" & UserInfo.BankId & ",'" & szLogin & "','" & szUserName & "','" & szCipher & "'," & dwBarred & "," & CStr(lngGroup) & "," & CStr(dwExpiry) & "," & CStr(dwDormant) & ",'" & Date.Now.ToString("yyyyMMddhhmmss") & "')"
             Else
-                myCmd.CommandText = "UPDATE UploadFileDetails SET uf_name='" & szSetupName & "', uf_header='" & szHeader & "', uf_details='" & szDetails & "', " & _
-                                    "uf_footer='" & szFooter & "', uf_check_field='" & szFldIdentifier & "' WHERE uf_id =" & szId
+                myCmd.CommandText = "UPDATE Users SET usr_login_id='" & szLogin & "', usr_name='" & szUserName & "', usr_barred=" & dwBarred & ", usr_group_id=" & CStr(lngGroup) & ", usr_expiry_period=" & CStr(dwExpiry) & ", usr_dormant_period=" & CStr(dwDormant) & " WHERE usr_id =" & szId
             End If
 
             dwReturnRow = myCmd.ExecuteNonQuery()
+
             myconn.Close()
 
-
-            'Refresh database immediately
-            myconn.Open()
             Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
 
             If (dwReturnRow > 0) Then
+                boolChanged = False
 
+                MessageBox.Show("User information has been saved.", "User", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                UpdateAuditLog("Update User ID " & szLogin, "Security")
                 If (szId = NEW_ID) Then
-                    Dim lngUFId As Long
-                    lngUFId = GetCurrentId("UploadFileDetails", "uf_id")
+                    Dim lngUserId As Long
+                    lngUserId = GetCurrentId("Users", "usr_id")
 
-                    If (lngUFId = FAIL_ID) Then
-                        MessageBox.Show("Error occur when retrieving last UploadFileSetup id.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    If (lngUserId = FAIL_ID) Then
+                        MessageBox.Show("Error occur when retrieving last user id.", "User", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub
                     End If
 
-                    szId = CStr(lngUFId)
-                    lbid.Text = szId
+                    szId = CStr(lngUserId)
                     TreeView1.SelectedNode.Tag = szId
+                    lbid.Text = szId
                 End If
 
-                TreeView1.SelectedNode.Text = szSetupName
-
-                boolChanged = False
-
-                MessageBox.Show("UploadFile setup information has been saved.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                UpdateAuditLog("Update UploadFileSetup ID " & szId, "Setup")
+                TreeView1.SelectedNode.Text = szUserName
             Else
-                MessageBox.Show("Fail to save UploadFileSetup information. Please try again later. If problem persist, please contact system administrator", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Fail to save bank information. Please try again later. If problem persist, please contact system administrator", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         Catch ex As Exception
             Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
-            MessageBox.Show("frmUploadFileSetup_btnSave_Click: Exception-" & ex.Message)
-        Finally
-            myconn.Close()
+            MessageBox.Show("frmUser_btnSave_Click: Exception-" & ex.Message)
         End Try
 
     End Sub
@@ -806,14 +947,14 @@ Public Class frmUploadFileSetup
             End If
 
         Catch ex As Exception
-            MessageBox.Show("frmUploadFileSetup_TreeView1_AfterSelect: Exception-" & ex.Message)
+            MessageBox.Show("frmUser_TreeView1_AfterSelect: Exception-" & ex.Message)
         End Try
 
     End Sub
 
     Private Sub TreeView1_BeforeSelect(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewCancelEventArgs) Handles TreeView1.BeforeSelect
         If (boolChanged = True) Then
-            If (MessageBox.Show("UploadFileSetup information has not been saved. Do you wish to discard the changes and proceed with the operation?", "UploadFileSetup", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
+            If (MessageBox.Show("User information has not been saved. Do you wish to discard the changes and proceed with the operation?", "User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No) Then
                 e.Cancel = True
             Else
                 boolChanged = False
@@ -821,7 +962,123 @@ Public Class frmUploadFileSetup
         End If
     End Sub
 
-    Private Sub mnuUploadFileSetupAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuUploadFileSetupAdd.Click
+    Private Sub btnGrant_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGrant.Click
+
+        Try
+            Dim dwResponse As Integer
+
+            dwResponse = MessageBox.Show("Are you sure you want to Grant Access for this user? Press 'YES' to proceed and 'NO' to abort.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+            If (dwResponse = vbNo) Then
+                Exit Sub
+            End If
+
+            Dim CryptographyFactory As New CryptoFactory
+            Dim Cryptographer As ICrypto = CryptographyFactory.MakeCryptographer("rijndael")
+            Dim szCipher As String = Cryptographer.Encrypt(DEFAULT_PASSWORD)
+
+            Dim szSQL As String
+            Dim dwReturnRow As Integer
+
+            Dim szId As String
+            szId = lbid.Text
+
+            Dim szLastLogin As String
+            szLastLogin = Date.Now.ToString("yyyyMMddhhmmss")
+
+            'Check for user password expiry date
+            Dim szExpiry As String
+            Dim dwExpiry As Integer
+
+            dwExpiry = NumericUpDown.Value
+
+            If (dwExpiry = 0) Then
+                szExpiry = INFINITE_EXPIRY
+            Else
+                Dim d1 As Date = Date.Today
+                Dim d2 As Date = d1.AddDays(dwExpiry)
+
+                szExpiry = d2.ToString("yyyyMMdd")
+            End If
+
+            szSQL = "UPDATE Users SET usr_revoked=0, usr_expiry_date='" & szExpiry & "', usr_password='" & szCipher & "', usr_last_login='" & szLastLogin & "', usr_retry_left=" & CStr(LOGIN_DEFAULT_RETRY) & " WHERE usr_id=" & szId
+            dwReturnRow = ExecuteSQL(szSQL)
+
+            Select Case dwReturnRow
+                Case -1
+                    MessageBox.Show("Error occur when granting user access.", "Grant Access", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Case 0
+                    MessageBox.Show("User record not found. No access granted for this user.", "Grant Access", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Case Else
+                    MessageBox.Show("User has been granted access. Please use the default password on next login.", "Grant Access", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    UpdateAuditLog("Grant User access for " & szId, "Security")
+            End Select
+
+
+        Catch ex As Exception
+            MessageBox.Show("frmUser_btnGrant_Click: Exception-" & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
+
+        Try
+            Dim dwResponse As Integer
+
+            dwResponse = MessageBox.Show("Are you sure you want to Reset password for this user? Press 'YES' to proceed and 'NO' to abort.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+            If (dwResponse = vbNo) Then
+                Exit Sub
+            End If
+
+            Dim CryptographyFactory As New CryptoFactory
+            Dim Cryptographer As ICrypto = CryptographyFactory.MakeCryptographer("rijndael")
+            Dim szCipher As String = Cryptographer.Encrypt(DEFAULT_PASSWORD)
+
+            Dim szSQL As String
+            Dim dwReturnRow As Integer
+
+            Dim szId As String
+            szId = lbid.Text
+
+            Dim szLastLogin As String
+            szLastLogin = Date.Now.ToString("yyyyMMddhhmmss")
+
+
+            'Check for user password expiry date
+            Dim szExpiry As String
+            Dim dwExpiry As Integer
+
+            dwExpiry = NumericUpDown.Value
+
+            If (dwExpiry = 0) Then
+                szExpiry = INFINITE_EXPIRY
+            Else
+                Dim d1 As Date = Date.Today
+                Dim d2 As Date = d1.AddDays(UserInfo.ExpiryPeriod)
+
+                szExpiry = d2.ToString("yyyyMMdd")
+            End If
+
+            szSQL = "UPDATE Users SET usr_expiry_date='" & szExpiry & "', usr_password='" & szCipher & "', usr_retry_left=" & CStr(LOGIN_DEFAULT_RETRY) & " WHERE usr_id=" & szId
+            dwReturnRow = ExecuteSQL(szSQL)
+
+            Select Case dwReturnRow
+                Case -1
+                    MessageBox.Show("Error occur when reset user password.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Case 0
+                    MessageBox.Show("User record not found. Password not reset.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Case Else
+                    MessageBox.Show("User password has been reset. Please use the default password on next login.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    UpdateAuditLog("Reset User Password for " & szId, "Security")
+            End Select
+
+        Catch ex As Exception
+            MessageBox.Show("frmUser_btnReset_Click: Exception-" & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub mnuBankAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuBankAdd.Click
 
         Try
             Dim dwIndex As Integer
@@ -832,24 +1089,24 @@ Public Class frmUploadFileSetup
                 Exit Sub
             End If
 
-            Dim szSetupName As String
-            szSetupName = "New Setup"
+            Dim szUserName As String
+            szUserName = NEW_USER
 
-            Dim nodp As New Windows.Forms.TreeNode(szSetupName, 0, 1)
+            Dim nodp As New Windows.Forms.TreeNode(szUserName, 0, 1)
             nodp.Tag = NEW_ID
             TreeView1.Nodes.Add(nodp)
             dwIndex = nodp.Index
             TreeView1.SelectedNode = TreeView1.Nodes(dwIndex)
 
-            AddNewUploadFileSetup()
+            AddNewUser()
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_mnuUploadFileSetupAdd_Click: Exception-" & ex.Message)
+            'MessageBox.Show("frmBank_mnuBankAdd_Click: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub mnuUploadFileSetupDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuUploadFileSetupDelete.Click
+    Private Sub mnuBankDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuBankDelete.Click
 
         Try
             Dim szId As String
@@ -865,28 +1122,33 @@ Public Class frmUploadFileSetup
                 Exit Sub
             End If
 
+            If (szId = UserInfo.Id) Then
+                MessageBox.Show("You are not allowed to delete the currently active user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
             If (MessageBox.Show("Are you sure you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.No) Then
                 Exit Sub
             End If
 
             Dim szSQL As String
             Dim dwReturnRow As Integer
-            szSQL = "UPDATE UploadFileDetails SET uf_deleted=-1 WHERE uf_id = " & szId
+            szSQL = "UPDATE Users SET usr_deleted=-1 WHERE usr_id = " & szId
 
             dwReturnRow = ExecuteSQL(szSQL)
             Select Case dwReturnRow
                 Case -1
-                    MessageBox.Show("Error occur when deleting UploadFileSetup record.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Error occur when deleting user record.", "User", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Case 0
-                    MessageBox.Show("UploadFileSetup record not found. No record deleted.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("User record not found. No record deleted.", "User", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Case Else
-                    MessageBox.Show("UploadFileSetup record has been deleted.", "UploadFileSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    UpdateAuditLog("Delete UploadFileSetup ID " & szId, "Setup")
+                    MessageBox.Show("User record has been deleted.", "User", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    UpdateAuditLog("Delete User ID " & szId, "Security")
                     TreeView1.SelectedNode.Remove()
             End Select
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_mnuUploadFileSetupDelete_Click: Exception-" & ex.Message)
+            'MessageBox.Show("frmBank_mnuBankDelete_Click: Exception-" & ex.Message)
         End Try
 
     End Sub
@@ -900,17 +1162,22 @@ Public Class frmUploadFileSetup
 
             dwIndex = TreeView1.SelectedNode.Index
 
-            LoadAllUFSetup()
+            LoadAllUser()
             Call RefreshInformation(szId)
             TreeView1.SelectedNode = TreeView1.Nodes(dwIndex)
 
         Catch ex As Exception
-            'MessageBox.Show("frmUploadFileSetup_mnuRefreshList_Click: Exception-" & ex.Message)
+            'MessageBox.Show("frmBank_mnuRefreshList_Click: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub cbAlgorithm_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub cbGroup_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbGroup.Click
         boolChanged = True
     End Sub
+
+    Private Sub chkBarred_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkBarred.Click
+        boolChanged = True
+    End Sub
+
 End Class
