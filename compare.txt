@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.IO
 Imports System.Xml
 
-Public Class frmMailerPrintDC
+Public Class frmMailerPrint
 
     Dim szHeaderDetails As String
     Dim szTrailerDetails As String
@@ -268,7 +268,6 @@ Public Class frmMailerPrintDC
             myconn.Open()
             myCmd.Connection = myconn
             myCmd.CommandTimeout = 1000
-
 
             'Retrieve the record information
             myCmd.CommandText = "exec sp_extractmprint '" & cbFileDate.Text & "','" & szBatchId & "','" & gszStationId & "'"
