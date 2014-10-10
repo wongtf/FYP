@@ -1,7 +1,7 @@
-Public Class frmConvReportDC
+Public Class frmConvReport
     Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click
         Dim dwOption As Integer = 0
-        Dim szFileName As String = BankInfo.Folder_Report & "LoadReportDebit.rpt"
+        Dim szFileName As String = BankInfo.Folder_Report & "LoadReport.rpt"
 
         If (IsFileExist(szFileName) = False) Then
             MessageBox.Show("Report file is missing from the following location: " & szFileName, "Delivery Report", MessageBoxButtons.OK, MessageBoxIcon.Error)
