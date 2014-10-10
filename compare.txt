@@ -1,4 +1,4 @@
-Public Class frmLoginDC
+Public Class frmLogin
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -43,7 +43,7 @@ Public Class frmLoginDC
     Friend WithEvents cbBank As System.Windows.Forms.ComboBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoginDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Me.Label2 = New System.Windows.Forms.Label
         Me.txtLoginId = New System.Windows.Forms.TextBox
         Me.txtPassword = New System.Windows.Forms.TextBox
@@ -279,7 +279,7 @@ Public Class frmLoginDC
                     txtLoginId.Focus()
                 Case LOGIN_FIRST_TIME
                     ' Display the login dialog.
-                    Dim dlgFirstTime As New frmFirstTimeDC
+                    Dim dlgFirstTime As New frmFirstTime
 
                     If (dlgFirstTime.ShowDialog() = Windows.Forms.DialogResult.OK) Then
                         DialogResult = Windows.Forms.DialogResult.OK
@@ -341,7 +341,4 @@ Public Class frmLoginDC
 
     End Sub
 
-    Private Sub txtLoginId_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLoginId.TextChanged
-
-    End Sub
 End Class
