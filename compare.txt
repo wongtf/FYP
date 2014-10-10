@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.IO
 Imports System.Xml
 
-Public Class frmSearchDC
+Public Class frmSearch
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -55,7 +55,7 @@ Public Class frmSearchDC
     Friend WithEvents lvField As System.Windows.Forms.ListView
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSearchDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSearch))
         Me.btnClose = New System.Windows.Forms.Button
         Me.lbCount = New System.Windows.Forms.Label
         Me.Label10 = New System.Windows.Forms.Label
