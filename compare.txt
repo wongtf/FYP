@@ -1,4 +1,4 @@
-Public Class frmDataSetupMainMenuDC
+Public Class frmDataSetupMainMenu
 
     Private Sub frmDataSetupMainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         RefreshTreeView()
@@ -246,12 +246,11 @@ Public Class frmDataSetupMainMenuDC
         Else
             Exit Sub
         End If
-        frmDataSetupDC.lblDataSetupID.Text = dwDataSetupId
-        frmDataSetupDC.ShowDialog()
+        frmDataSetup.lblDataSetupID.Text = dwDataSetupId
+        frmDataSetup.ShowDialog()
     End Sub
 
     Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
         Me.Dispose()
     End Sub
-
 End Class
