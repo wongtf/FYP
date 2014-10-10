@@ -1,6 +1,6 @@
 Imports System.IO
 
-Public Class frmShredDC
+Public Class frmShred
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -44,7 +44,7 @@ Public Class frmShredDC
     Friend WithEvents lstFile As System.Windows.Forms.ListBox
     Friend WithEvents ProgressBar As System.Windows.Forms.ProgressBar
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmShredDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmShred))
         Me.cmbFileGroup = New System.Windows.Forms.ComboBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.lstFile = New System.Windows.Forms.ListBox
