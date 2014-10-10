@@ -1,5 +1,5 @@
 
-Public Class frmAuditLogPrintDC
+Public Class frmAuditLogPrint
 
     Private Function GetReportSQL(ByRef szReportName As String) As String
         GetReportSQL = ""
