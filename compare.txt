@@ -1,4 +1,4 @@
-Public Class frmExceptionsDC
+Public Class frmExceptions
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         DialogResult = Windows.Forms.DialogResult.Abort
