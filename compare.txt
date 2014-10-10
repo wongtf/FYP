@@ -1,4 +1,4 @@
-Public Class frmExceptionRptDC
+Public Class frmExceptionRpt
 
     Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click
         Dim szFileName As String = ""
