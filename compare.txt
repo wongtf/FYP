@@ -1,4 +1,4 @@
-Public Class frmUserDC
+Public Class frmUser
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -73,7 +73,7 @@ Public Class frmUserDC
     Friend WithEvents mnuRefreshList As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUser))
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.Label7 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
