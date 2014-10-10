@@ -1,7 +1,7 @@
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
 
-Public Class frmViewReportDC
+Public Class FrmViewReport
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -38,7 +38,7 @@ Public Class frmViewReportDC
     Friend WithEvents btnGetReport As System.Windows.Forms.Button
 
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmViewReportDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmViewReport))
         Me.cboFileName = New System.Windows.Forms.ComboBox
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer
         Me.Label5 = New System.Windows.Forms.Label
@@ -125,7 +125,7 @@ Public Class frmViewReportDC
 
     Private Sub FrmViewReport_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'show the form caption 
-        frmViewReportDC.ActiveForm.Text = "Print " & szReportType & " Report"
+        FrmViewReport.ActiveForm.Text = "Print " & szReportType & " Report"
 
         'Get all report file name in TempReport table
         Dim strSQL As String
