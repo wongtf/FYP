@@ -1,4 +1,4 @@
-Public Class frmCourierRptDC
+Public Class frmCourierRpt
 
     Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click
         Dim dwOption As Integer = 0
