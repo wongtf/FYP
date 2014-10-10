@@ -1,4 +1,4 @@
-Public Class frmCardSetupMainMenuDC
+Public Class frmCardSetupMainMenu
 
     Private Sub frmCardSetupMainMenu_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
@@ -297,11 +297,11 @@ Public Class frmCardSetupMainMenuDC
         Else
             Exit Sub
         End If
-        frmCardSetupDC.lblCardSetupID.Text = dwCardSetupId
-        frmCardSetupDC.lblDataSetupID.Text = dwDataSetupId
-        frmCardSetupDC.lblCardSetupName.Text = Trim(txtCardSetupName.Text)
-        frmCardSetupDC.lblDataSetupName.Text = szDataSetupName
-        frmCardSetupDC.ShowDialog()
+        frmCardSetup.lblCardSetupID.Text = dwCardSetupId
+        frmCardSetup.lblDataSetupID.Text = dwDataSetupId
+        frmCardSetup.lblCardSetupName.Text = Trim(txtCardSetupName.Text)
+        frmCardSetup.lblDataSetupName.Text = szDataSetupName
+        frmCardSetup.ShowDialog()
     End Sub
 
     'Private Sub txtLeftMargin_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
@@ -445,6 +445,5 @@ Public Class frmCardSetupMainMenuDC
 
     End Sub
 
-
-
+    
 End Class
