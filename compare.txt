@@ -1,449 +1,294 @@
-Public Class frmCardSetupMainMenu
+Public Class frmChgPwdDC
+    Inherits System.Windows.Forms.Form
 
-    Private Sub frmCardSetupMainMenu_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-        Me.Dispose()
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+
     End Sub
 
-    Private Sub frmCardSetupMainMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        UpdateAuditLog("Define Card Setup", "Audit Log")
-        RefreshTreeView()
-        LoadDataSetupName()
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
     End Sub
 
-    Private Sub RefreshTreeView()
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents btnOK As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtNewPwd1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNewPwd As System.Windows.Forms.TextBox
+    Friend WithEvents txtCurrent As System.Windows.Forms.TextBox
+    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmChgPwdDC))
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.btnClose = New System.Windows.Forms.Button
+        Me.btnOK = New System.Windows.Forms.Button
+        Me.txtNewPwd1 = New System.Windows.Forms.TextBox
+        Me.txtNewPwd = New System.Windows.Forms.TextBox
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.txtCurrent = New System.Windows.Forms.TextBox
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(28, 42)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(129, 23)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Current Password"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 210)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(386, 5)
+        Me.GroupBox1.TabIndex = 20
+        Me.GroupBox1.TabStop = False
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(12, 226)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(315, 23)
+        Me.Label4.TabIndex = 19
+        Me.Label4.Text = "Note: Password is case-sensitive."
+        '
+        'btnClose
+        '
+        Me.btnClose.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Abort
+        Me.btnClose.ForeColor = System.Drawing.Color.White
+        Me.btnClose.Location = New System.Drawing.Point(274, 134)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 22)
+        Me.btnClose.TabIndex = 4
+        Me.btnClose.Text = "&Close"
+        Me.btnClose.UseVisualStyleBackColor = False
+        '
+        'btnOK
+        '
+        Me.btnOK.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnOK.ForeColor = System.Drawing.Color.White
+        Me.btnOK.Location = New System.Drawing.Point(196, 134)
+        Me.btnOK.Name = "btnOK"
+        Me.btnOK.Size = New System.Drawing.Size(75, 22)
+        Me.btnOK.TabIndex = 3
+        Me.btnOK.Text = "&OK"
+        Me.btnOK.UseVisualStyleBackColor = False
+        '
+        'txtNewPwd1
+        '
+        Me.txtNewPwd1.Location = New System.Drawing.Point(164, 102)
+        Me.txtNewPwd1.Name = "txtNewPwd1"
+        Me.txtNewPwd1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtNewPwd1.Size = New System.Drawing.Size(184, 21)
+        Me.txtNewPwd1.TabIndex = 2
+        '
+        'txtNewPwd
+        '
+        Me.txtNewPwd.Location = New System.Drawing.Point(164, 70)
+        Me.txtNewPwd.Name = "txtNewPwd"
+        Me.txtNewPwd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtNewPwd.Size = New System.Drawing.Size(184, 21)
+        Me.txtNewPwd.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(28, 106)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(129, 23)
+        Me.Label3.TabIndex = 18
+        Me.Label3.Text = "Reenter new password"
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(28, 74)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(129, 23)
+        Me.Label2.TabIndex = 16
+        Me.Label2.Text = "New Password"
+        '
+        'txtCurrent
+        '
+        Me.txtCurrent.Location = New System.Drawing.Point(164, 38)
+        Me.txtCurrent.Name = "txtCurrent"
+        Me.txtCurrent.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtCurrent.Size = New System.Drawing.Size(184, 21)
+        Me.txtCurrent.TabIndex = 0
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'frmChgPwd
+        '
+        Me.AcceptButton = Me.btnOK
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.BackColor = System.Drawing.Color.LightSlateGray
+        Me.CancelButton = Me.btnClose
+        Me.ClientSize = New System.Drawing.Size(382, 250)
+        Me.Controls.Add(Me.txtCurrent)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.btnOK)
+        Me.Controls.Add(Me.txtNewPwd1)
+        Me.Controls.Add(Me.txtNewPwd)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmChgPwd"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = " Change Password"
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+
+#End Region
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        DialogResult = Windows.Forms.DialogResult.Abort
+    End Sub
+
+    Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
 
         Try
-            TreeView1.Nodes.Clear()
+            ErrorProvider1.SetError(txtCurrent, "")
+            ErrorProvider1.SetError(txtNewPwd, "")
+            ErrorProvider1.SetError(txtNewPwd1, "")
 
-            Dim szCardSetup As String
-
-            Dim myconn As New OleDb.OleDbConnection(gszConnString)
-            Dim strSQL As String = "SELECT * FROM CardSetupSpec WHERE job_bank_id=" & BankInfo.Id & " AND cs_deleted=0 Order by cs_name ASC"
-
-            Dim myCmd As New OleDb.OleDbCommand(strSQL, myconn)
-            Dim datareader As OleDb.OleDbDataReader = Nothing
-
-            myconn.Open()
-            datareader = myCmd.ExecuteReader()
-            While datareader.Read()
-
-                If (IsDBNull(datareader("cs_id")) = False) Then
-                    szCardSetup = IIf(IsDBNull(datareader("cs_name")), "", datareader("cs_name"))
-
-                    Dim nodp As New Windows.Forms.TreeNode(szCardSetup, 0, 1)
-                    nodp.Tag = datareader("cs_id")
-                    TreeView1.Nodes.Add(nodp)
-                End If
-
-            End While
-            datareader.Close()
-            myconn.Close()
-
-        Catch ex As Exception
-            MessageBox.Show("RefreshData: Exception-" & ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub LoadDataSetupName()
-        Try
-            Dim strSQL As String = "SELECT ds_id, ds_name FROM DataSetupSpec WHERE job_bank_id=" & UserInfo.BankId & " AND ds_deleted=0 ORDER BY ds_name ASC"
-
-            LoadTableCombo(cbDSetupName, strSQL)
-
-        Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_LoadDataSetupName: Exception-" & ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub LoadDataSetupFldName()
-        Try
-            Dim szDataSetup As String
-            Dim dwds_id As Integer
-            szDataSetup = Trim(cbDSetupName.Text)
-            If szDataSetup = "" Then Exit Sub
-            dwds_id = Val(Trim(Mid(szDataSetup, 101, Len(szDataSetup) - 100)))
-            Dim strSQL As String = "SELECT data_fldid, data_field_name FROM DataSetup WHERE ds_id=" & dwds_id & " ORDER BY data_field_name ASC"
-
-            LoadTableCombo(cbCardNoFldId, strSQL)
-            LoadTableCombo(cbMailerIndFldId, strSQL)
-
-        Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_LoadDataSetupFldName: Exception-" & ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub RefreshData(ByVal szId As String)
-
-        Try
-            If (szId = "") Then
+            If (txtCurrent.Text = "") Then
+                ErrorProvider1.SetError(txtCurrent, "Current Password cannot be blank.")
                 Exit Sub
             End If
 
-            'ClearControlBox()
+            If (Len(Trim(txtCurrent.Text)) < PASSWORD_MIN_LEN) Then
+                ErrorProvider1.SetError(txtCurrent, "Current Password must be at least " & PASSWORD_MIN_LEN & " characters long.")
+                Exit Sub
+            End If
 
-            Dim myconn As New OleDb.OleDbConnection(gszConnString)
-            Dim myCmd As New OleDb.OleDbCommand
-            Dim datareader As OleDb.OleDbDataReader = Nothing
+            If (AcceptablePassword(Trim(txtCurrent.Text)) = False) Then
+                ErrorProvider1.SetError(txtCurrent, "Current Password must contains mixture of uppercase, lowercase and number.")
+                Exit Sub
+            End If
 
+            If (txtNewPwd.Text = "") Then
+                ErrorProvider1.SetError(txtNewPwd, "New Password cannot be blank.")
+                Exit Sub
+            End If
 
-            myconn.Open()
-            myCmd.Connection = myconn
+            If (Len(Trim(txtNewPwd.Text)) < PASSWORD_MIN_LEN) Then
+                ErrorProvider1.SetError(txtNewPwd, "New Password must be at least " & PASSWORD_MIN_LEN & " characters long.")
+                Exit Sub
+            End If
 
-            'Retrieve the card setup information
-            myCmd.CommandText = "SELECT * FROM CardSetupSpec WHERE cs_id=" & szId & ""
-            datareader = myCmd.ExecuteReader()
+            If (AcceptablePassword(Trim(txtNewPwd.Text)) = False) Then
+                ErrorProvider1.SetError(txtNewPwd, "New Password must contains mixture of uppercase, lowercase and number.")
+                Exit Sub
+            End If
 
-            While datareader.Read()
-                lblCardSetupID.Text = IIf(IsDBNull(datareader("cs_id")), "", datareader("cs_id"))
-                txtCardSetupName.Text = IIf(IsDBNull(datareader("cs_name")), "", datareader("cs_name"))
-                txtDefinition.Text = IIf(IsDBNull(datareader("cs_definition")), "", datareader("cs_definition"))
-                cbDSetupName.SelectedIndex = FindComboItem(cbDSetupName, IIf(IsDBNull(datareader("ds_id")), -1, datareader("ds_id")))
-                LoadDataSetupFldName()
-                cbFormType.SelectedIndex = IIf(IsDBNull(datareader("cs_mailer_type")), -1, Val(datareader("cs_mailer_type")) - 1)
-                cbCardNoFldId.SelectedIndex = FindComboItem(cbCardNoFldId, IIf(IsDBNull(datareader("cs_cardid")), -1, datareader("cs_cardid")))
-                cbMailerIndFldId.SelectedIndex = FindComboItem(cbMailerIndFldId, IIf(IsDBNull(datareader("cs_mailerind")), -1, datareader("cs_mailerind")))
-                txtEncodeMIC.Text = IIf(IsDBNull(datareader("cs_enc_id")), "", datareader("cs_enc_id"))
-                txtOCRMIC.Text = IIf(IsDBNull(datareader("cs_ocr_id")), "", datareader("cs_ocr_id"))
-                txtSMCMIC.Text = IIf(IsDBNull(datareader("cs_smc_id")), "", datareader("cs_smc_id"))
-                txtMailerMIC.Text = IIf(IsDBNull(datareader("cs_mailer_id")), "", datareader("cs_mailer_id"))
-                txtEndRecSeparator.Text = IIf(IsDBNull(datareader("cs_endrecord_separator")), "", datareader("cs_endrecord_separator"))
-                Exit While
-            End While
+            If (Trim(txtNewPwd.Text) = Trim(UserInfo.LoginId)) Then
+                ErrorProvider1.SetError(txtNewPwd, "New Password must not be the same as login id.")
+                Exit Sub
+            End If
 
-            datareader.Close()
-            myconn.Close()
+            If (Trim(txtNewPwd.Text) = DEFAULT_PASSWORD) Then
+                ErrorProvider1.SetError(txtNewPwd, "Default password must not be use as new password.")
+                Exit Sub
+            End If
 
-        Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_RefreshData: Exception-" & ex.Message)
-        End Try
+            If (txtNewPwd1.Text = "") Then
+                ErrorProvider1.SetError(txtNewPwd1, "New Password cannot be blank.")
+                Exit Sub
+            End If
 
-    End Sub
+            If (txtNewPwd.Text <> txtNewPwd1.Text) Then
+                ErrorProvider1.SetError(txtNewPwd1, "New Password does not match.")
+                Exit Sub
+            End If
 
-    Private Sub ClearControlBox()
-        lblCardSetupID.Text = ""
-        txtCardSetupName.Text = ""
-        txtDefinition.Text = ""
-        cbDSetupName.Text = ""
-        cbFormType.Text = ""
-        cbCardNoFldId.Text = ""
-        cbMailerIndFldId.Text = ""
-        txtEncodeMIC.Text = ""
-        txtOCRMIC.Text = ""
-        txtSMCMIC.Text = ""
-        txtMailerMIC.Text = ""
-        txtEndRecSeparator.Text = ""
-    End Sub
+            Dim szCurrent As String
+            Dim szNewPwd As String
 
-    Private Sub TreeView1_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
-        Try
-            Dim szId As String
-            szId = TreeView1.SelectedNode.Tag
+            szCurrent = Trim(txtCurrent.Text)
+            szNewPwd = Trim(txtNewPwd.Text)
 
-            RefreshData(szId)
+            If (IsPasswordValid(UserInfo.Id, szCurrent) = True) Then
 
-        Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_TreeView1_AfterSelect: Exception-" & ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub cmdClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClear.Click
-        ClearControlBox()
-    End Sub
-
-    Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
-        AddModifyCardSetup(True)
-    End Sub
-
-    Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEdit.Click
-        If lblCardSetupID.Text <> "" Then
-            AddModifyCardSetup(False)
-        End If
-    End Sub
-
-    Private Sub AddModifyCardSetup(ByVal boolAddFlag As Boolean)
-        Try
-            Dim szCardSetupName As String = ""
-            Dim dwDataSetupID As Integer = 0
-            Dim szDefinition As String = ""
-            Dim dwFormType As Integer = 0
-            Dim dwCardNoFldID As Integer = 0
-            Dim dwMailerIndFldId As Integer = 0
-
-            Dim szENCMIC As String
-            Dim szOCRMIC As String
-            Dim szSMCMIC As String
-            Dim szMailerMIC As String
-            Dim szEndRecSeparator As String
-
-            Dim dwCount As Integer
-            Dim szSQL As String = ""
-            Dim dwReturnRow As Integer
-            Dim dwCardSetupID As Integer = 0
-            Dim szAuditText As String = ""
-
-            szCardSetupName = Trim(txtCardSetupName.Text)
-            If Trim(cbDSetupName.Text) = "" Then Exit Sub
-            dwDataSetupID = Val(Trim(Mid(cbDSetupName.Text, 101, Len(cbDSetupName.Text) - 100)))
-            If Trim(cbCardNoFldId.Text) = "" Then Exit Sub
-            dwCardNoFldID = Val(Trim(Mid(cbCardNoFldId.Text, 101, Len(cbCardNoFldId.Text) - 100)))
-            If Trim(cbMailerIndFldId.Text) = "" Then Exit Sub
-            dwMailerIndFldId = Val(Trim(Mid(cbMailerIndFldId.Text, 101, Len(cbMailerIndFldId.Text) - 100)))
-            If Trim(cbFormType.Text) = "" Then Exit Sub
-            dwFormType = cbFormType.SelectedIndex + 1
-
-            If szCardSetupName = "" Or dwDataSetupID = 0 Or dwDataSetupID = 0 Or dwCardNoFldID = 0 Or dwMailerIndFldId = 0 Or dwFormType = 0 Then Exit Sub
-            szDefinition = Trim(txtDefinition.Text)
-
-            szENCMIC = Trim(txtEncodeMIC.Text)
-            szOCRMIC = Trim(txtOCRMIC.Text)
-            szSMCMIC = Trim(txtSMCMIC.Text)
-            szMailerMIC = Trim(txtMailerMIC.Text)
-            szEndRecSeparator = Trim(txtEndRecSeparator.Text)
-
-            If boolAddFlag = True Then  'add new record
-                'check the datasetup name already in the db
-                dwCount = GetCountSQL("SELECT * FROM CardSetupSpec where cs_name='" & szCardSetupName & "'")
-                If dwCount <= 0 Then
-                    'Add new record
-                    szSQL = "INSERT INTO CardSetupSpec (job_bank_id, ds_id, cs_name, cs_definition, cs_mailer_type, cs_cardid, " & _
-                            "cs_mailerInd, cs_Enc_ID, cs_OCR_Id, cs_SMC_Id, cs_Mailer_Id, cs_EndRecord_Separator) VALUES (" & UserInfo.BankId & ", " & _
-                            dwDataSetupID & ", '" & szCardSetupName & "', '" & szDefinition & "', " & dwFormType & ", " & dwCardNoFldID & ", " & _
-                            dwMailerIndFldId & ", '" & szENCMIC & "', '" & szOCRMIC & "', '" & szSMCMIC & "', '" & szMailerMIC & "', '" & szEndRecSeparator & "')"
-                    szAuditText = "Add a New Card Design format [" & szCardSetupName & "]"
-                Else
-                    MessageBox.Show("Card Setup already exists.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
+                If (SavePassword(UserInfo.Id, szCurrent, szNewPwd) = True) Then
+                    UpdateAuditLog("User Password for " & UserInfo.Id & " updated", "Audit Log")
+                    DialogResult = Windows.Forms.DialogResult.OK
                 End If
+
             Else
-                dwCardSetupID = CLng(Trim(lblCardSetupID.Text))
-                szSQL = "UPDATE CardSetupSpec SET cs_definition='" & szDefinition & "', cs_mailer_type=" & dwFormType & _
-                ", cs_cardid=" & dwCardNoFldID & ", cs_mailerInd=" & dwMailerIndFldId & ", cs_Enc_Id='" & szENCMIC & _
-                "', cs_OCR_Id='" & szOCRMIC & "', cs_SMC_Id='" & szSMCMIC & "', cs_Mailer_Id='" & szMailerMIC & _
-                "', cs_EndRecord_Separator='" & szEndRecSeparator & "' WHERE cs_id=" & dwCardSetupID
-                szAuditText = "Edit Card Design format [" & szCardSetupName & "]"
+                ErrorProvider1.SetError(txtCurrent, "Current password is invalid.")
+                txtCurrent.SelectAll()
+                txtCurrent.Focus()
             End If
 
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when saving cardsetup record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Case 0
-                    MessageBox.Show("CardSetup record not found. No record deleted.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Case 1
-                    MessageBox.Show("One Record saved.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    RefreshTreeView()
-                    UpdateAuditLog(szAuditText, "Setup")
-            End Select
-            If boolAddFlag = True Then
-                ClearControlBox()
-            End If
         Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_AddModifyDataSetup: Exception-" & ex.Message())
+            MessageBox.Show("frmChgPwd_btnOK_Click: Exception-" & ex.Message)
         End Try
+
     End Sub
 
-    Private Sub cmdDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDelete.Click
-        Dim szSQL As String
-        Dim dwReturnRow As Integer
-        Dim dwCardSetupId As Integer
-        Dim szCardSetupName As String
-        If Trim(lblCardSetupID.Text) <> "" Then
-            dwCardSetupId = CLng(Trim(lblCardSetupID.Text))
-            szCardSetupName = Trim(txtCardSetupName.Text)
-            If (MessageBox.Show("Are you sure you want to delete this record?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.No) Then
-                Exit Sub
-            End If
-
-            szSQL = "DELETE From CardSetupSpec WHERE cs_id=" & dwCardSetupId
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when deleting cardsetup field record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Case 0
-                    MessageBox.Show("Card Field record not found. No record deleted.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Case 1
-                    MessageBox.Show("One Record deleted.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    ClearControlBox()
-                    RefreshTreeView()
-                    UpdateAuditLog("Delete Card Design Format [" & szCardSetupName & "]", "Setup")
-            End Select
-        End If
+    Private Sub frmChgPwd_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        UpdateAuditLog("Edit User Password", "Audit Log")
+        ErrorProvider1.BlinkRate = 500
     End Sub
 
-    Private Sub cmdDetailsDef_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDetails.Click
-        Dim dwCardSetupId As Integer
-        Dim dwDataSetupId As Integer
-        Dim szDataSetupName As String
-        Dim szTemp As String
+    Private Sub txtPassword_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCurrent.GotFocus, txtNewPwd.GotFocus, txtNewPwd1.GotFocus
 
-        If Trim(lblCardSetupID.Text) <> "" Then
-            dwCardSetupId = CLng(Trim(lblCardSetupID.Text))
-            szTemp = Trim(cbDSetupName.Text)
-            If szTemp <> "" Then
-                dwDataSetupId = Val(Trim(Mid(szTemp, 101, Len(szTemp) - 100)))
-                szDataSetupName = Trim(Mid(szTemp, 1, 100))
-            Else
-                MsgBox("Please select one of the data setup name first!", MsgBoxStyle.Critical, "Card Setup")
-                Exit Sub
-            End If
-        Else
-            Exit Sub
-        End If
-        frmCardSetup.lblCardSetupID.Text = dwCardSetupId
-        frmCardSetup.lblDataSetupID.Text = dwDataSetupId
-        frmCardSetup.lblCardSetupName.Text = Trim(txtCardSetupName.Text)
-        frmCardSetup.lblDataSetupName.Text = szDataSetupName
-        frmCardSetup.ShowDialog()
-    End Sub
-
-    'Private Sub txtLeftMargin_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-    '    'only accept integers from 0 to 9
-    '    If Asc(e.KeyChar) = 8 Then 'backspace
-    '        e.Handled = False
-    '    ElseIf Asc(e.KeyChar) >= 48 And Asc(e.KeyChar) <= 57 Then
-    '        e.Handled = False
-    '    Else
-    '        e.Handled = True
-    '    End If
-    'End Sub
-
-    Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
-        Me.Dispose()
-    End Sub
-
-    Private Sub cmdSaveAs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveAs.Click
-        Dim myconn As New OleDb.OleDbConnection(gszConnString)
         Try
-            Dim dwCardSetupID As Integer = CLng(Trim(lblCardSetupID.Text))
-            If dwCardSetupID = 0 Then Exit Try
-            Dim szSQL As String
-            Dim dwReturnRow As Integer
-            Dim szCardSetupName As String
-            szCardSetupName = InputBox("New Card Setup Name?", "Card Setup")
-            If szCardSetupName = "" Then Exit Sub
-
-            'check for duplicate name given
-            For i As Integer = 0 To TreeView1.Nodes.Count - 1
-                If szCardSetupName = TreeView1.Nodes.Item(i).Text Then
-                    MessageBox.Show("Duplicate CardSetup Name given.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-            Next
-
-            'Duplicate the cardsetupspec 
-            szSQL = "INSERT INTO CardSetupSpec (job_bank_id, ds_id, cs_name, cs_definition, cs_mailer_type, cs_cardid, " & _
-                    "cs_mailerInd, cs_Enc_ID, cs_OCR_Id, cs_SMC_Id, cs_Mailer_Id, cs_EndRecord_Separator, cs_deleted) " & _
-                    "SELECT job_bank_id, ds_id, '" & szCardSetupName & "', cs_definition, cs_mailer_type, cs_cardid, " & _
-                    "cs_mailerInd, cs_Enc_ID, cs_OCR_Id, cs_SMC_Id, cs_Mailer_Id, cs_EndRecord_Separator, cs_deleted from CardSetupSpec Where cs_id=" & dwCardSetupID
-
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate cardSetup record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'Get the CardSetupID
-            Dim strSQL As String = "SELECT cs_id FROM CardSetupSpec Where cs_name='" & szCardSetupName & "'"
-
-            Dim myCmd As New OleDb.OleDbCommand(strSQL, myconn)
-            Dim datareader As OleDb.OleDbDataReader = Nothing
-            Dim dwNewCardSetupID As Integer
-            myconn.Open()
-            datareader = myCmd.ExecuteReader()
-            If datareader.HasRows Then
-                datareader.Read()
-                dwNewCardSetupID = IIf(IsDBNull(datareader("cs_id")), 0, datareader("cs_id"))
-            End If
-            datareader.Close()
-
-            If dwNewCardSetupID = 0 Then Exit Try
-            'duplicate each cardsetup details
-            'EmbossDetails
-            szSQL = "INSERT INTO EmbossingDetails (cs_id, element_seq, ds_id, data_fldid, element_col_offset, element_row_offset, element_tag) " & _
-                    "SELECT " & dwNewCardSetupID & ", element_seq, ds_id, data_fldid, element_col_offset, element_row_offSet, element_tag from EmbossingDetails " & _
-                    "WHERE cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate embossDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'EncodeDetails
-            szSQL = "INSERT INTO EncodeDataDetails (cs_id, element_seq, ds_id, data_fldid, element_track_num, element_separator) " & _
-                    "SELECT " & dwNewCardSetupID & ", element_seq, ds_id, data_fldid, element_track_num, element_separator from EncodeDataDetails " & _
-                    "Where cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate encodeDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'OCRDetails
-            szSQL = "INSERT INTO IndentationDetails (cs_id, element_seq, ds_id, data_fldid, element_col_offset, element_row_offset) " & _
-                    "SELECT " & dwNewCardSetupID & ", element_seq, ds_id, data_fldid, element_col_offset, element_row_offset From IndentationDetails " & _
-                    "Where cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate IndentDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'SMCDetails
-            szSQL = "INSERT INTO SMCDetails (cs_id, element_seq, ds_id, data_fldid, element_tagname, element_taglen, element_appname) " & _
-                    "SELECT " & dwNewCardSetupID & ", element_seq, ds_id, data_fldid, element_tagname, element_taglen, element_appname From SMCDetails " & _
-                    "Where cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate SMCDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'ReportDetails
-            szSQL = "INSERT INTO ReportDetails (cs_id, ds_id, data_fldid, report_fldtag) " & _
-                    "SELECT " & dwNewCardSetupID & ", ds_id, data_fldid, report_fldtag From ReportDetails " & _
-                    "Where cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate reportDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            'MailerDetails
-            szSQL = "INSERT INTO MailerDetails (cs_id, element_seq, ds_id, data_fldid, element_field_name) " & _
-                    "SELECT " & dwNewCardSetupID & ", element_seq, ds_id, data_fldid, element_field_name From MailerDetails " & _
-                    "Where cs_id=" & dwCardSetupID
-            dwReturnRow = ExecuteSQL(szSQL)
-            Select Case dwReturnRow
-                Case -1
-                    MessageBox.Show("Error occur when duplicate MailerDetails record.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-            End Select
-
-            MessageBox.Show("New Card Setup Name successfully duplicated.", "CardSetup", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            RefreshTreeView()
-            UpdateAuditLog("Duplicate a New Card Design format [" & szCardSetupName & "]", "Setup")
+            Dim myTextBox As TextBox = sender
+            myTextBox.SelectAll()
 
         Catch ex As Exception
-            MessageBox.Show("frmCardSetupMainMenu_cmdSaveASClick: Exception-" & ex.Message)
-        Finally
-            myconn.Close()
+            MessageBox.Show("frmChgPwd_txtCurrent_GotFocus: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    
 End Class
