@@ -1,4 +1,4 @@
-Public Class frmAccessMenuDC
+Public Class frmAccessMenu
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -59,7 +59,7 @@ Public Class frmAccessMenuDC
     Friend WithEvents mnuRefreshList As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccessMenuDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccessMenu))
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.Label9 = New System.Windows.Forms.Label
         Me.lbid = New System.Windows.Forms.Label
