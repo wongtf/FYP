@@ -43,7 +43,7 @@ Public Class frmAuditLogPrint
                 szReportName = szReportName & szReportStartDate & " to " & szReportEndDate
                 szReportStartDate = szReportStartDate & " " & "0:0:0" 'StartTime
                 szReportEndDate = szReportEndDate & " " & "23:59:59" 'EndTime
-                szSQL = szReportSelection & "DateLog >= #" & szReportStartDate & "# And DateLog <= #" & szReportEndDate & "# Order By DateLog, USERID"
+                szSQL = szReportSelection & "DateLog >= '" & szReportStartDate & "' And DateLog <= '" & szReportEndDate & "' Order By DateLog, USERID"
                 Return szSQL
             Else
                 MsgBox("Please specify all the report definition first!", MsgBoxStyle.Information, "CIS")
@@ -53,7 +53,7 @@ Public Class frmAuditLogPrint
         End Try
     End Function
 
-    Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click, btnPrintReport.Click
+    Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click
         Dim myconn As New OleDb.OleDbConnection()
         Try
             Dim szReportName As String = ""
@@ -61,7 +61,7 @@ Public Class frmAuditLogPrint
             If szSQL = "" Then Exit Sub
 
             Dim szFileName As String = ""
-            szFileName = gszReportFilePath & "AuditLog.rpt"
+            szFileName = BankInfo.Folder_Report & "\AuditLog.rpt"
 
             If (IsFileExist(szFileName) = False) Then
                 MessageBox.Show("Report file is missing from the following location: " & szFileName, "CIS", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -74,7 +74,9 @@ Public Class frmAuditLogPrint
             'Load the report
             objReport.Load(szFileName)
 
-            myconn.ConnectionString = gszAuditLogDbConnectString
+            myconn.ConnectionString = gszConnString
+
+            UpdateAuditLog("Print Audit Log Report - " & szReportName, "Production")
 
             'Dim strSQL As String = "Select * From AuditLog Where DateLog<=#13/11/2008 0:0:0#"
             Dim DA As New OleDb.OleDbDataAdapter(szSQL, myconn)
@@ -84,28 +86,19 @@ Public Class frmAuditLogPrint
             objReport.SetDataSource(DS.Tables("AuditLog"))
             objReport.SummaryInfo.ReportTitle = szReportName
 
-            Dim clickedCtrl As Control
-            If TypeOf sender Is Control Then
-                clickedCtrl = DirectCast(sender, Control)
-                If clickedCtrl.Name = "btnGetReport" Then
-                    'Collated' in this context has nothing to do with database collation.  
-                    'Some advanced printers (like copier/printers) will sort each document into its own shelf.  
-                    'Not every printer supports this functionality, so check the printer dialog before setting to true.  
-                    'To print the entire report, set startpage and endpage each to 0. 
-                    'change the printer name at run time
-                    'objReport.PrintOptions.PrinterName = "CutePDF Writer"
-                    'objReport.PrintToPrinter(1, False, 0, 0)
-                    CrystalReportViewer1.ReportSource = Nothing
-                    CrystalReportViewer1.ReportSource = objReport
-                    CrystalReportViewer1.RefreshReport()
+            'Collated' in this context has nothing to do with database collation.  
+            'Some advanced printers (like copier/printers) will sort each document into its own shelf.  
+            'Not every printer supports this functionality, so check the printer dialog before setting to true.  
+            'To print the entire report, set startpage and endpage each to 0. 
+            'change the printer name at run time
+            'objReport.PrintOptions.PrinterName = "CutePDF Writer"
+            'objReport.PrintToPrinter(1, False, 0, 0)
+            CrystalReportViewer1.ReportSource = Nothing
+            CrystalReportViewer1.ReportSource = objReport
+            CrystalReportViewer1.RefreshReport()
 
-                    CrystalReportViewer1.Show()
-                Else
-                    objReport.PrintToPrinter(1, False, 0, 0)
-                End If
-            End If
-            'objReport.Close()
-            'objReport.Dispose()
+            CrystalReportViewer1.Show()
+
             DA = Nothing
             DS = Nothing
 
@@ -121,9 +114,11 @@ Public Class frmAuditLogPrint
     End Sub
 
     Private Sub frmAuditLogPrint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        UpdateAuditLog("Print Audit Log Report", "Audit Log")
+
         Dim myconn As New OleDb.OleDbConnection()
         Try
-            myconn.ConnectionString = gszAuditLogDbConnectString
+            myconn.ConnectionString = gszConnString
             myconn.Open()
 
             Dim myCmd As New OleDb.OleDbCommand()
@@ -134,11 +129,12 @@ Public Class frmAuditLogPrint
             'list all access group from db to access group combo box
             cmbUserName.Items.Clear()
             cmbUserName.Items.Add("All")
-            myCmd.CommandText = "SELECT * FROM UserMatrix"
+            myCmd.CommandText = "SELECT * FROM Users WHERE usr_bank_id=" & BankInfo.Id & " AND usr_deleted=0"
+
             datareader = myCmd.ExecuteReader()
             If datareader.HasRows Then
                 While datareader.Read()
-                    szUserName = IIf(IsDBNull(datareader("UserName")), "", datareader("UserName"))
+                    szUserName = IIf(IsDBNull(datareader("usr_login_id")), "", datareader("usr_login_id"))
                     cmbUserName.Items.Add(szUserName)
                 End While
             End If
