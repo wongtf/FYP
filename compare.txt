@@ -1,6 +1,6 @@
 Imports System.IO
 
-Public Class frmLogoDC
+Public Class frmLogo
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -40,7 +40,7 @@ Public Class frmLogoDC
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents picLogo As System.Windows.Forms.PictureBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogoDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogo))
         Me.Label2 = New System.Windows.Forms.Label
         Me.btnCancel = New System.Windows.Forms.Button
         Me.btnOK = New System.Windows.Forms.Button
