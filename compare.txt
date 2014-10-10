@@ -1,92 +1,67 @@
+Module oledbMod
 
-Public Class IniFile
-    ' API functions
-    Private Declare Ansi Function GetPrivateProfileString _
-      Lib "kernel32.dll" Alias "GetPrivateProfileStringA" _
-      (ByVal lpApplicationName As String, _
-      ByVal lpKeyName As String, ByVal lpDefault As String, _
-      ByVal lpReturnedString As System.Text.StringBuilder, _
-      ByVal nSize As Integer, ByVal lpFileName As String) _
-      As Integer
-    Private Declare Ansi Function WritePrivateProfileString _
-      Lib "kernel32.dll" Alias "WritePrivateProfileStringA" _
-      (ByVal lpApplicationName As String, _
-      ByVal lpKeyName As String, ByVal lpString As String, _
-      ByVal lpFileName As String) As Integer
-    Private Declare Ansi Function GetPrivateProfileInt _
-      Lib "kernel32.dll" Alias "GetPrivateProfileIntA" _
-      (ByVal lpApplicationName As String, _
-      ByVal lpKeyName As String, ByVal nDefault As Integer, _
-      ByVal lpFileName As String) As Integer
-    Private Declare Ansi Function FlushPrivateProfileString _
-      Lib "kernel32.dll" Alias "WritePrivateProfileStringA" _
-      (ByVal lpApplicationName As Integer, _
-      ByVal lpKeyName As Integer, ByVal lpString As Integer, _
-      ByVal lpFileName As String) As Integer
-    Dim strFilename As String
+    'Constant Declaration
+    Private Const oledb_ADD_DSN As Integer = 1        ' Add data source
+    Private Const oledb_CONFIG_DSN As Integer = 2     ' Configure (edit) data source
+    Private Const oledb_REMOVE_DSN As Integer = 3     ' Remove data source
 
-    ' Constructor, accepting a filename
-    Public Sub New(ByVal Filename As String)
-        strFilename = Filename
-    End Sub
+    Private Declare Function SQLConfigDataSource Lib "oledbCP32.DLL" (ByVal hwndParent As Integer, ByVal fRequest As Integer, ByVal lpszDriver As String, ByVal lpszAttributes As String) As Integer
 
-    ' Read-only filename property
-    ReadOnly Property FileName() As String
-        Get
-            Return strFilename
-        End Get
-    End Property
+    Public Function CreateDSN(ByVal szDSNname As String, ByVal szServer As String, ByVal szDatabase As String, ByVal szUID As String, ByVal szPWD As String) As Boolean
+        Try
+            CreateDSN = False
 
-    Public Function GetString(ByVal Section As String, _
-      ByVal Key As String, ByVal [Default] As String) As String
-        ' Returns a string from your INI file
-        Dim intCharCount As Integer
-        Dim objResult As New System.Text.StringBuilder(256)
-        GetString = ""
-        intCharCount = GetPrivateProfileString(Section, Key, _
-           [Default], objResult, objResult.Capacity, strFilename)
-        If intCharCount > 0 Then GetString = _
-           Left(objResult.ToString, intCharCount)
+            Dim intRet As Integer
+            Dim szDriver As String
+            Dim szAttributes As String
+
+            ''Set the driver to SQL Server because it is most common.
+            'szDriver = "Microsoft Access Driver (*.mdb)"
+            'szAttributes = "Description=XMLc database connection" & Chr(0) & _
+            '                "DSN=" & szDSNname & Chr(0) & _
+            '                "dbq=" & szDatabase & Chr(0) & _
+            '                "UID=" & szUID & Chr(0) & _
+            '                "PWD=" & szPWD & Chr(0) & _
+            '                "Server=Microsoft Access Driver (*.mdb)"
+
+            szDriver = "SQL Server"
+            szAttributes = "Description=Delivery Report database connection" & Chr(0) & _
+                           "DSN=" & szDSNname & Chr(0) & _
+                           "SERVER=" & szServer & Chr(0) & _
+                           "DATABASE=" & szDatabase & Chr(0)
+
+            intRet = SQLConfigDataSource(0, oledb_ADD_DSN, szDriver, szAttributes)
+            If intRet Then
+                CreateDSN = True
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("obdc_CreateDSN: Exception-" & ex.Message)
+        End Try
     End Function
 
-    Public Function GetInteger(ByVal Section As String, _
-      ByVal Key As String, ByVal [Default] As Integer) As Integer
-        ' Returns an integer from your INI file
-        Return GetPrivateProfileInt(Section, Key, _
-           [Default], strFilename)
+    Public Function DeleteDSN(ByVal szDSNname As String) As Boolean
+        Try
+            DeleteDSN = False
+
+            Dim intRet As Integer
+            Dim szDriver As String
+            Dim szAttributes As String
+
+            'Set the driver to SQL Server because most common.
+            szDriver = "Microsoft Access Driver (*.mdb)"
+
+            'Set the attributes delimited by null.
+            szAttributes = "DSN=" & szDSNname & Chr(0)
+
+            intRet = SQLConfigDataSource(0, oledb_REMOVE_DSN, szDriver, szAttributes)
+            If intRet Then
+                DeleteDSN = True
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("obdc_DeleteDSN: Exception-" & ex.Message)
+        End Try
     End Function
 
-    Public Function GetBoolean(ByVal Section As String, _
-      ByVal Key As String, ByVal [Default] As Boolean) As Boolean
-        ' Returns a boolean from your INI file
-        Return (GetPrivateProfileInt(Section, Key, _
-           CInt([Default]), strFilename) = 1)
-    End Function
-
-    Public Sub WriteString(ByVal Section As String, _
-      ByVal Key As String, ByVal Value As String)
-        ' Writes a string to your INI file
-        WritePrivateProfileString(Section, Key, Value, strFilename)
-        Flush()
-    End Sub
-
-    Public Sub WriteInteger(ByVal Section As String, _
-      ByVal Key As String, ByVal Value As Integer)
-        ' Writes an integer to your INI file
-        WriteString(Section, Key, CStr(Value))
-        Flush()
-    End Sub
-
-    Public Sub WriteBoolean(ByVal Section As String, _
-      ByVal Key As String, ByVal Value As Boolean)
-        ' Writes a boolean to your INI file
-        WriteString(Section, Key, CStr(CInt(Value)))
-        Flush()
-    End Sub
-
-    Private Sub Flush()
-        ' Stores all the cached changes to your INI file
-        FlushPrivateProfileString(0, 0, 0, strFilename)
-    End Sub
-
-End Class
+End Module
