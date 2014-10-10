@@ -1,269 +1,368 @@
+Imports System.Data
 Imports System.IO
+Imports System.Xml
 
-Public Class frmLogo
-    Inherits System.Windows.Forms.Form
+Public Class frmMailerPrintDC
 
-#Region " Windows Form Designer generated code "
+    Dim szHeaderDetails As String
+    Dim szTrailerDetails As String
+    Dim szDetails As String
+    Dim szFieldCheck As String
 
-    Public Sub New()
-        MyBase.New()
+    Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAll.Click
 
-        'This call is required by the Windows Form Designer.
-        InitializeComponent()
-
-        'Add any initialization after the InitializeComponent() call
-
-    End Sub
-
-    'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
-        End If
-        MyBase.Dispose(disposing)
-    End Sub
-
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
-
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents btnOK As System.Windows.Forms.Button
-    Friend WithEvents lvField As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents picLogo As System.Windows.Forms.PictureBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogo))
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.btnCancel = New System.Windows.Forms.Button
-        Me.btnOK = New System.Windows.Forms.Button
-        Me.lvField = New System.Windows.Forms.ListView
-        Me.ColumnHeader1 = New System.Windows.Forms.ColumnHeader
-        Me.ColumnHeader2 = New System.Windows.Forms.ColumnHeader
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.picLogo = New System.Windows.Forms.PictureBox
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'Label2
-        '
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(16, 11)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(232, 23)
-        Me.Label2.TabIndex = 61
-        Me.Label2.Text = "Please select a logo that represent the bank."
-        '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.White
-        Me.btnCancel.Location = New System.Drawing.Point(276, 68)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(83, 23)
-        Me.btnCancel.TabIndex = 60
-        Me.btnCancel.Text = "&Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'btnOK
-        '
-        Me.btnOK.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnOK.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOK.ForeColor = System.Drawing.Color.White
-        Me.btnOK.Location = New System.Drawing.Point(276, 37)
-        Me.btnOK.Name = "btnOK"
-        Me.btnOK.Size = New System.Drawing.Size(83, 23)
-        Me.btnOK.TabIndex = 59
-        Me.btnOK.Text = "&OK"
-        Me.btnOK.UseVisualStyleBackColor = False
-        '
-        'lvField
-        '
-        Me.lvField.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
-        Me.lvField.Cursor = System.Windows.Forms.Cursors.Cross
-        Me.lvField.FullRowSelect = True
-        Me.lvField.GridLines = True
-        Me.lvField.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
-        Me.lvField.Location = New System.Drawing.Point(16, 38)
-        Me.lvField.Name = "lvField"
-        Me.lvField.Size = New System.Drawing.Size(235, 247)
-        Me.lvField.TabIndex = 58
-        Me.lvField.UseCompatibleStateImageBehavior = False
-        Me.lvField.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "#"
-        Me.ColumnHeader1.Width = 32
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Name"
-        Me.ColumnHeader2.Width = 183
-        '
-        'Label1
-        '
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(281, 194)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 23)
-        Me.Label1.TabIndex = 63
-        Me.Label1.Text = "Preview logo"
-        '
-        'picLogo
-        '
-        Me.picLogo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picLogo.Image = CType(resources.GetObject("picLogo.Image"), System.Drawing.Image)
-        Me.picLogo.Location = New System.Drawing.Point(280, 214)
-        Me.picLogo.Name = "picLogo"
-        Me.picLogo.Size = New System.Drawing.Size(70, 70)
-        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picLogo.TabIndex = 64
-        Me.picLogo.TabStop = False
-        '
-        'frmLogo
-        '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
-        Me.BackColor = System.Drawing.Color.LightSlateGray
-        Me.CancelButton = Me.btnCancel
-        Me.ClientSize = New System.Drawing.Size(381, 315)
-        Me.Controls.Add(Me.picLogo)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnOK)
-        Me.Controls.Add(Me.lvField)
-        Me.Controls.Add(Me.Label1)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmLogo"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = " Bank Logo"
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-
-    End Sub
-
-#End Region
-
-    Private Sub frmLogo_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
-        UpdateAuditLog("Define Bank Logo", "Audit Log")
-        LoadAllLogo()
-
-        Dim szFileName As String
-        szFileName = gszWorkDrive & "LOGO\" & gszFieldName
-
-        If (IsFileExist(szFileName) = True) Then
-            picLogo.Visible = True
-            picLogo.Image = Image.FromFile(szFileName)
-        Else
-            picLogo.Visible = False
-        End If
-    End Sub
-
-    Private Sub LoadAllLogo()
         Try
-            Dim szFileCollection() As String
-            Dim dwIndex As Integer
-            Dim dwCount As Integer = 1
-            Dim szName As String
+            Dim myconn As New OleDb.OleDbConnection(gszConnString)
+            Dim myCmd As New OleDb.OleDbCommand
+            Dim datareader As OleDb.OleDbDataReader = Nothing
 
-            lvField.Items.Clear()
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+            btnAll.Enabled = False
+            btnSelected.Enabled = False
+            cbFileDate.Enabled = False
+            cbType.Enabled = False
+            cbFile.Enabled = False
+            btnRefresh.Enabled = False
 
-            szFileCollection = Directory.GetFiles(gszWorkDrive & "LOGO")
+            'Update the record information
+            myconn.Open()
+            myCmd.Connection = myconn
 
-            For dwIndex = 0 To UBound(szFileCollection)
-                szName = Path.GetFileName(szFileCollection(dwIndex))
-                Dim lvItem As New ListViewItem(CStr(dwCount))
-                lvItem.SubItems.Add(szName)
+            myCmd.CommandText = "exec sp_selectcn '" & cbFile.SelectedItem.ToString & "','" & gszStationId & "','',1"
+            myCmd.ExecuteNonQuery()
 
-                lvField.Items.Add(lvItem)
-                dwCount += 1
-            Next
+            'myCmd.CommandText = "exec sp_updateprint '" & cbFile.SelectedItem.ToString & "','" & gszStationId & "'"
+            'myCmd.ExecuteNonQuery()
 
-            If (dwCount > 0) Then
-                btnOK.Enabled = True
-            End If
+            myconn.Close()
+
+            UpdateAuditLog("Print Mailer for file " & cbFile.SelectedItem.ToString, "Production")
+            Dim szFileName As String = ""
+            szFileName = BankInfo.Folder_Report & "Mailer.rpt"
+
+            'Crystal Report's report document object
+            Dim objReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
+            'Load the report
+            objReport.Load(szFileName)
+
+            Dim myconn1 As New OleDb.OleDbConnection(gszConnString)
+            Dim strSQL As String = "Select * From TempPrint WHERE Selected=1 AND fileName='" & cbFile.SelectedItem.ToString & "' AND StationId='" & gszStationId & "' AND Field4='True' ORDER BY Field1"
+            Dim DA As New OleDb.OleDbDataAdapter(strSQL, myconn1)
+            Dim DS As New DataSet
+
+            DA.Fill(DS, "TempPrint")
+            objReport.SetDataSource(DS.Tables("TempPrint"))
+
+            CrystalReportViewer1.ReportSource = Nothing
+            CrystalReportViewer1.ReportSource = objReport
+            CrystalReportViewer1.RefreshReport()
+
+            CrystalReportViewer1.PrintReport()
 
         Catch ex As Exception
-
+            MessageBox.Show("frmMailerPrint_btnAll.Click: Exception-" & ex.Message)
+        Finally
+            btnAll.Enabled = True
+            btnSelected.Enabled = True
+            cbFileDate.Enabled = True
+            cbType.Enabled = True
+            cbFile.Enabled = True
+            btnRefresh.Enabled = True
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         End Try
+
     End Sub
 
-    Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
+    Private Sub btnSelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelected.Click
         Try
             Dim dwIndex As Integer
-            dwIndex = CInt(lvField.SelectedIndices.Item(0).ToString)
+            Dim boolSelected As Boolean = False
+            Dim myconn As New OleDb.OleDbConnection(gszConnString)
+            Dim myCmd As New OleDb.OleDbCommand
 
-            If (dwIndex = -1) Then
-                MessageBox.Show("No bank logo selected. Please select a bank logo before proceed.", "Select Logo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+            btnAll.Enabled = False
+            btnSelected.Enabled = False
+            cbFileDate.Enabled = False
+            cbType.Enabled = False
+            cbFile.Enabled = False
+            btnRefresh.Enabled = False
+
+            myconn.Open()
+            myCmd.Connection = myconn
+
+            myCmd.CommandText = "exec sp_selectcn '" & cbFile.SelectedItem.ToString & "','" & gszStationId & "','',2"
+            myCmd.ExecuteNonQuery()
+
+            For dwIndex = 0 To lvField.Items.Count - 1
+                If (lvField.Items(dwIndex).Selected = True) Then
+                    'Update the record information
+                    boolSelected = True
+                    myCmd.CommandText = "exec sp_selectcn '" & cbFile.SelectedItem.ToString & "','" & gszStationId & "','" & lvField.Items(dwIndex).SubItems(1).Text & "',0"
+                    myCmd.ExecuteNonQuery()
+                End If
+            Next
+
+            If (boolSelected = False) Then
+                myconn.Close()
+                MessageBox.Show("No record selected for printing.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
 
-            gszFieldName = lvField.Items(dwIndex).SubItems(1).Text
+            'myCmd.CommandText = "exec sp_updateprint '" & cbFile.SelectedItem.ToString & "','" & gszStationId & "'"
+            'myCmd.ExecuteNonQuery()
 
-            DialogResult = Windows.Forms.DialogResult.OK
+            myconn.Close()
+
+            UpdateAuditLog("Print selected Mailer for file " & cbFile.SelectedItem.ToString, "Production")
+
+            Dim szFileName As String = ""
+            szFileName = BankInfo.Folder_Report & "Mailer.rpt"
+
+            'Crystal Report's report document object
+            Dim objReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
+            'Load the report
+            objReport.Load(szFileName)
+
+            Dim myconn1 As New OleDb.OleDbConnection(gszConnString)
+            Dim strSQL As String = "Select * From TempPrint WHERE Selected=1 AND fileName='" & cbFile.SelectedItem.ToString & "' AND StationId='" & gszStationId & "' AND Field4='True' ORDER BY Field1"
+            '"Select * From TempCN Where StationId='" & gszStationId & "'"
+            Dim DA As New OleDb.OleDbDataAdapter(strSQL, myconn1)
+            Dim DS As New DataSet
+
+            DA.Fill(DS, "TempPrint")
+            objReport.SetDataSource(DS.Tables("TempPrint"))
+
+            CrystalReportViewer1.ReportSource = Nothing
+            CrystalReportViewer1.ReportSource = objReport
+            CrystalReportViewer1.RefreshReport()
+
+            CrystalReportViewer1.PrintReport()
 
         Catch ex As Exception
-            MessageBox.Show("frmSelectField_btnOK_Click: Exception-" & ex.Message)
+            MessageBox.Show("frmMailerPrint_btnSelected.Click: Exception-" & ex.Message)
+        Finally
+            btnAll.Enabled = True
+            btnSelected.Enabled = True
+            cbFileDate.Enabled = True
+            cbType.Enabled = True
+            cbFile.Enabled = True
+            btnRefresh.Enabled = True
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         End Try
+
     End Sub
 
-    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         DialogResult = Windows.Forms.DialogResult.Abort
     End Sub
 
-    Private Sub lvField_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvField.DoubleClick
+    Private Sub frmMailerPrint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Dim dwIndex As Integer
-            dwIndex = CInt(lvField.SelectedIndices.Item(0).ToString)
+            UpdateAuditLog("Print Mailer ", "Audit Log")
+            btnAll.Enabled = False
+            btnSelected.Enabled = False
 
-            If (dwIndex = -1) Then
-                MessageBox.Show("No bank logo selected. Please select a bank logo before proceed.", "Select Logo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                Exit Sub
+            'Get all report file name in TempReport table
+            Dim myconn As New OleDb.OleDbConnection(gszConnString)
+            Dim szSQL As String
+
+            szSQL = "SELECT DISTINCT(data_filedate) FROM data ORDER BY data_filedate"
+
+            cbFileDate.Items.Clear()
+
+            Dim myCmd As New OleDb.OleDbCommand(szSQL, myconn)
+            Dim datareader As OleDb.OleDbDataReader = Nothing
+
+            myconn.Open()
+            datareader = myCmd.ExecuteReader()
+
+            While datareader.Read()
+                cbFileDate.Items.Add(datareader("data_filedate"))
+            End While
+
+            datareader.Close()
+
+            Select Case cbFileDate.Items.Count
+                Case 0
+                    cbFileDate.SelectedIndex = -1
+                Case 1
+                    cbFileDate.SelectedIndex = 0
+                Case Else
+                    cbFileDate.SelectedIndex = cbFileDate.Items.Count - 1
+            End Select
+
+            'Get List of File Type in db
+            szSQL = "SELECT DISTINCT(data_FileType) FROM data"
+            myCmd.CommandText = szSQL
+
+            cbType.Items.Clear()
+
+            datareader = myCmd.ExecuteReader()
+
+            While datareader.Read()
+                cbType.Items.Add(datareader("data_FileType"))
+            End While
+
+            If cbType.Items.Count > 0 Then
+                cbType.SelectedIndex = 1
             End If
 
-            gszFieldName = lvField.Items(dwIndex).SubItems(1).Text
-
-            DialogResult = Windows.Forms.DialogResult.OK
+            datareader.Close()
+            myconn.Close()
 
         Catch ex As Exception
-            MessageBox.Show("frmSelectField_btnOK_Click: Exception-" & ex.Message)
+            btnSelected.Enabled = True
+            MessageBox.Show("frmMailerPrint_Load: Exception-" & ex.Message)
         End Try
+
     End Sub
 
-    Private Sub lvField_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvField.SelectedIndexChanged
-        Try
-            Dim dwIndex As Integer
-            dwIndex = CInt(lvField.SelectedIndices.Item(0).ToString)
+    Private Sub AddStatusItem(ByVal szStatus As String)
 
-            If (dwIndex = -1) Then
+        Try
+            Dim lvItem As New ListViewItem(szStatus)
+            lvField.Items.Add(lvItem)
+            lvField.Update()
+
+        Catch ex As Exception
+            MessageBox.Show("frmMailerPrint_AddStatusItem: Exception-" & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub LoadData(ByVal szBatchId As String)
+
+        Try
+            If (szBatchId = "") Then
                 Exit Sub
             End If
 
-            Dim szFileName As String
-            szFileName = gszWorkDrive & "LOGO\" & lvField.Items(dwIndex).SubItems(1).Text
+            picLoad.Visible = True
+            btnAll.Enabled = False
+            btnSelected.Enabled = False
+            cbFileDate.Enabled = False
+            cbType.Enabled = False
+            cbFile.Enabled = False
+            btnRefresh.Enabled = False
 
-            If (IsFileExist(szFileName) = True) Then
-                picLogo.Visible = True
-                picLogo.Image = Image.FromFile(szFileName)
-            Else
-                picLogo.Visible = False
-            End If
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+            Me.Refresh()
+
+            Dim myconn As New OleDb.OleDbConnection(gszConnString)
+            Dim myCmd As New OleDb.OleDbCommand
+            Dim datareader As OleDb.OleDbDataReader = Nothing
+
+            'Retrieve format field tie to the job_id
+            Dim dwCount As Integer
+
+            Dim szPAN As String = ""
+            Dim szCDSRef As String = ""
+            Dim szName As String = ""
+            Dim szMName As String = ""
+
+            dwCount = 1
+
+            myconn.Open()
+            myCmd.Connection = myconn
+            myCmd.CommandTimeout = 1000
+
+
+            'Retrieve the record information
+            myCmd.CommandText = "exec sp_extractmprint '" & cbFileDate.Text & "','" & szBatchId & "','" & gszStationId & "'"
+            datareader = myCmd.ExecuteReader()
+
+            lvField.Items.Clear()
+
+            While datareader.Read()
+                szCDSRef = IIf(IsDBNull(datareader("Field2")), "", datareader("Field2"))
+                szName = IIf(IsDBNull(datareader("Field3")), "", datareader("Field3"))
+                szPAN = IIf(IsDBNull(datareader("Field5")), "", datareader("Field5"))
+                szMName = IIf(IsDBNull(datareader("Line05")), "", datareader("Line05"))
+
+                If (Trim(szCDSRef) <> "") Then
+                    Dim lvItem As New ListViewItem(dwCount)
+
+                    lvItem.SubItems.Add(szCDSRef)
+                    lvItem.SubItems.Add(szPAN)
+                    lvItem.SubItems.Add(szName)
+                    lvItem.SubItems.Add(szMName)
+
+                    lvField.Items.Add(lvItem)
+                    dwCount += 1
+                End If
+
+            End While
+
+            datareader.Close()
+            myconn.Close()
+
+            lbCount.Text = "Record found: " & CStr(dwCount - 1)
+            btnAll.Enabled = True
 
         Catch ex As Exception
-            'MessageBox.Show("frmLogo_lvField_Click: Exception-" & ex.Message)
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+            MessageBox.Show("frmScan_LoadData: Exception-" & ex.Message)
+        Finally
+            picLoad.Visible = False
+            btnAll.Enabled = True
+            btnSelected.Enabled = True
+            cbFileDate.Enabled = True
+            cbType.Enabled = True
+            cbFile.Enabled = True
+            btnRefresh.Enabled = True
+            Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         End Try
+
+    End Sub
+
+    Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
+        LoadData(cbFile.SelectedItem.ToString)
+    End Sub
+
+    Private Sub cbType_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbType.SelectedValueChanged
+        If (cbFileDate.Items.Count = 0) Then
+            Exit Sub
+        End If
+
+        'Get all report file name in TempReport table
+        Dim myconn As New OleDb.OleDbConnection(gszConnString)
+        Dim szSQL As String
+
+        'Dim dwJobIndex As Integer
+        'Dim lngJobIdTemp As Long
+        'Dim dwFileType As Integer
+        Dim szFileName As String
+
+        'szSQL = "SELECT DISTINCT(data_batch_id) FROM data WHERE data_filedate='" & cbFileDate.SelectedItem.ToString & "' ORDER BY data_batch_id"
+        szSQL = "SELECT DISTINCT(data_filename) FROM data WHERE data_filedate='" & cbFileDate.SelectedItem.ToString & "' AND data_filetype='" & cbType.SelectedItem.ToString & "' ORDER BY data_filename"
+
+        Dim myCmd As New OleDb.OleDbCommand(szSQL, myconn)
+        Dim datareader As OleDb.OleDbDataReader = Nothing
+
+        cbFile.Items.Clear()
+
+        myconn.Open()
+        datareader = myCmd.ExecuteReader()
+
+        While datareader.Read()
+            szFileName = datareader("data_filename")
+
+            'dwJobIndex = GetJobID(BankInfo.Id, szFileName, lngJobIdTemp)
+            'If (dwJobIndex <> -1) Then
+            '    dwFileType = arJobInfo(dwJobIndex).FileType
+
+            '    If (dwFileType = cbType.SelectedIndex) Or (cbType.SelectedIndex = 0) Then
+            cbFile.Items.Add(szFileName)
+            '    End If
+            'End If
+
+        End While
+        datareader.Close()
+        myconn.Close()
+
     End Sub
 
 End Class
