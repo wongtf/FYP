@@ -1,34 +1,8 @@
-Public Class frmEmbossRpt
+Public Class frmExceptionRptDC
 
     Private Sub btnGetReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetReport.Click
-        Dim dwOption As Integer = 0
         Dim szFileName As String = ""
-        szFileName = BankInfo.Folder_Report & "EmbossReport.rpt"
-
-        If (optDaily.Checked = True) Then
-            dwOption = 1
-        End If
-
-        If (optRenewal.Checked = True) Then
-            dwOption = 2
-        End If
-
-        'If (optUpgrade.Checked = True) Then
-        '    dwOption = 3
-        '    szFileName = BankInfo.Folder_Report & "upgrade.rpt"
-        'End If
-
-        If (optPreEmb1.Checked = True) Then
-            dwOption = 4
-        End If
-
-        If (optPreEmb2.Checked = True) Then
-            dwOption = 5
-        End If
-
-        If (optMEB1.Checked = True) Then
-            dwOption = 6
-        End If
+        szFileName = BankInfo.Folder_Report & "exceptions.rpt"
 
         If (IsFileExist(szFileName) = False) Then
             MessageBox.Show("Report file is missing from the following location: " & szFileName, "Delivery Report", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -39,10 +13,10 @@ Public Class frmEmbossRpt
             Dim szSQL As String
             Dim dwReturnRow As Integer
 
-            szSQL = "EXEC sp_extractemboss " & CStr(dwOption) & ",'" & cbFileDate.SelectedItem.ToString & "','" & gszStationId & "'"
+            szSQL = "EXEC sp_extractexception '" & cbFileDate.SelectedItem.ToString & "','" & gszStationId & "'"
             dwReturnRow = ExecuteSQL(szSQL)
 
-            UpdateAuditLog("Print Embossing Report for filetype[" & CStr(dwOption) & "] and filedate[" & cbFileDate.SelectedItem.ToString & "]", "Production")
+            UpdateAuditLog("Print Exception Report for filedate[" & cbFileDate.SelectedItem.ToString & "]", "Production")
             'Crystal Report's report document object
             Dim objReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
 
@@ -58,6 +32,7 @@ Public Class frmEmbossRpt
 
             DA.Fill(DS, "TempReport")
             objReport.SetDataSource(DS.Tables("TempReport"))
+
             CrystalReportViewer1.ReportSource = Nothing
             CrystalReportViewer1.ReportSource = objReport
             CrystalReportViewer1.RefreshReport()
@@ -65,18 +40,19 @@ Public Class frmEmbossRpt
             CrystalReportViewer1.Show()
 
         Catch ex As System.Exception
-            MessageBox.Show("frmEmbossRpt_btnGetReport_Click: Exception-" & ex.Message)
+            MessageBox.Show("frmExceptionRpt_btnGetReport_Click: Exception-" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub frmEmbossRpt_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        UpdateAuditLog("Print Embossing Report", "Audit Log")
+    Private Sub frmExceptionRpt_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        UpdateAuditLog("Print Exception Report", "Audit Log")
         'Get all report file name in TempReport table
         cbFileDate.Items.Clear()
 
         Dim szSQL As String
-        szSQL = "SELECT DISTINCT(data_filedate) FROM data ORDER BY data_filedate"
+        szSQL = "SELECT DISTINCT(data_filedate) FROM data Where data_DataException='True' ORDER BY data_filedate"
+
 
         Dim myconn As New OleDb.OleDbConnection(gszConnString)
         Dim myCmd As New OleDb.OleDbCommand(szSQL, myconn)
@@ -84,7 +60,7 @@ Public Class frmEmbossRpt
         myCmd.CommandTimeout = 0
 
         Dim datareader As OleDb.OleDbDataReader = Nothing
-        'myconn.ConnectionTimeout = 0
+
         myconn.Open()
         datareader = myCmd.ExecuteReader()
 
