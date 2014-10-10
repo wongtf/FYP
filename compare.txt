@@ -1,4 +1,4 @@
-Public Class frmFirstTimeDC
+Public Class frmFirstTime
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -41,7 +41,7 @@ Public Class frmFirstTimeDC
     Friend WithEvents Label1 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFirstTimeDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFirstTime))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.btnClose = New System.Windows.Forms.Button
