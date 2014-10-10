@@ -1,8 +1,9 @@
 Imports System.IO
 
-Public Class frmDataSetupDC
+Public Class frmDataSetup
     Dim dwDSetupID As Integer
     Dim dwDataFldCnt As Integer
+    Dim selectedCardType As String = frmCardTypeSelection.cardType
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOpenSampleFile.Click
         Dim dwFileNum As Integer = FreeFile()
@@ -11,10 +12,10 @@ Public Class frmDataSetupDC
             Dim szFileName As String
             Dim szTempString As String
             Dim lngPosition As Long
-            Dim lngRecLen As Long = Val(frmDataSetupMainMenuDC.txtRecordLength.Text)
+            Dim lngRecLen As Long = Val(frmDataSetupMainMenu.txtRecordLength.Text)
             Dim lMaxInputLen As Long = 10000
             Dim lFileLen As Long
-            Dim dwHeaderSize As Long = Val(frmDataSetupMainMenuDC.txtFileHeaderSize.Text)
+            Dim dwHeaderSize As Long = Val(frmDataSetupMainMenu.txtFileHeaderSize.Text)
             Dim lngReadLen As Long
 
             openFileDialog1.InitialDirectory = "c:\"
@@ -87,17 +88,19 @@ Public Class frmDataSetupDC
     End Sub
 
     Private Sub frmDataSetup_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If selectedCardType = "Debit" Then
+            Me.rbDataType5.Visible = "true"
+        End If
         dwDSetupID = Val(Trim(lblDataSetupID.Text))
         RefreshGrid()
         RefreshDataFldNameCombo()
     End Sub
 
-
     Private Sub RefreshGrid()
         Try
-            Dim myconn As OleDb.OleDbConnection = New OleDb.OleDbConnection(gszConnString)
+            Dim myconn As oledb.oledbConnection = New oledb.oledbConnection(gszConnString)
             Dim strSQL As String = "SELECT * FROM DataSetup Where ds_id=" & dwDSetupID & " ORDER By data_fldid"
-            Dim daDataSetup As OleDb.OleDbDataAdapter = New OleDb.OleDbDataAdapter(strSQL, myconn)
+            Dim daDataSetup As oledb.oledbDataAdapter = New oledb.oledbDataAdapter(strSQL, myconn)
             Dim dsDataSetup As DataSet = New DataSet()
 
             'Create a DataTable
@@ -116,13 +119,13 @@ Public Class frmDataSetupDC
     End Sub
 
     Private Sub RefreshDataFldNameCombo()
-        Dim myconn As New OleDb.OleDbConnection()
+        Dim myconn As New oledb.oledbConnection()
         Try
             Dim dwi As Integer = 0
             myconn.ConnectionString = gszConnString
             myconn.Open()
 
-            Dim myCmd As New OleDb.OleDbCommand()
+            Dim myCmd As New oledb.oledbCommand()
             myCmd.Connection = myconn
             Dim datareader As OleDb.OleDbDataReader = Nothing
             Dim szDataFldName As String
@@ -162,8 +165,6 @@ Public Class frmDataSetupDC
         chkCurrency.Checked = False
         txtConditionFld.Text = ""
         txtReplValue.Text = ""
-        'add new for Name Separator 08/02/2013 azuwa kasnan
-        'chkCheckNmSeparator.Checked = False
     End Sub
 
     Private Sub dgridDataSetup_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgridDataSetup.CellMouseClick
@@ -219,9 +220,6 @@ Public Class frmDataSetupDC
                 txtOldDateFmt.Text = IIf(IsDBNull(dgridDataSetup(16, e.RowIndex).Value), "", dgridDataSetup(16, e.RowIndex).Value)
                 txtNewDateFormat.Text = IIf(IsDBNull(dgridDataSetup(17, e.RowIndex).Value), "", dgridDataSetup(17, e.RowIndex).Value)
                 chkCurrency.Checked = CBool(dgridDataSetup(18, e.RowIndex).Value)
-
-                'add new for Name Separator 08/02/2013 azuwa kasnan
-                'chkCheckNmSeparator.Checked = CBool(dgridDataSetup(19, e.RowIndex).Value)
             End If
         Catch ex As Exception
             MessageBox.Show("dgridDataSetup_CellMouseClick: Exception-" & ex.Message())
@@ -234,7 +232,6 @@ Public Class frmDataSetupDC
 
     Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         AddModifyDataFld(True)
-        RefreshDataFldNameCombo()
     End Sub
 
     Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEdit.Click
@@ -269,9 +266,6 @@ Public Class frmDataSetupDC
             Dim szAuditText As String = ""
             Dim szArithmeticFld As String = ""
 
-            'add new for Name Separator 08/02/2013 azuwa kasnan
-            'Dim boolCheckNameSeparator As Integer
-
             szDataFldName = Trim(txtDataFldName.Text)
             If rbDataType0.Checked = True Then
                 dwDataType = 0
@@ -296,9 +290,8 @@ Public Class frmDataSetupDC
             ElseIf rbDataType5.Checked = True Then
                 dwDataType = 5
                 szCompositeData = txtCompositeFld.Text
-                'szArithmeticFld = Trim(txtCompositeFld.Text)
-                'szArithmeticFld = Trim(txtArithmeticFld.Text)
             End If
+
             szOutputFormat = Trim(cmbOutputFormat.Text)
             If chkConditionFld.Checked = True Then
                 dwDataType = 4
@@ -311,9 +304,6 @@ Public Class frmDataSetupDC
             boolCurrencyFld = chkCurrency.Checked
             szDateFormat = Trim(txtNewDateFormat.Text)
             szOldDateFormat = Trim(txtOldDateFmt.Text)
-
-            'add new for Name Separator 08/02/2013 azuwa kasnan
-            'boolCheckNameSeparator = chkCheckNmSeparator.Checked
 
             If boolAddFlag = True Then  'add new record
                 'check the last row datafld id
@@ -414,7 +404,5 @@ Public Class frmDataSetupDC
         End If
 
     End Sub
-
-
 
 End Class
