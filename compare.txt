@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.IO
 Imports System.Xml
 
-Public Class frmOpenDC
+Public Class frmOpen
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -60,7 +60,7 @@ Public Class frmOpenDC
     Friend WithEvents lstErrorFile As System.Windows.Forms.ListBox
     Friend WithEvents lbRecNo As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOpenDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOpen))
         Me.btnOK = New System.Windows.Forms.Button
         Me.btnClose = New System.Windows.Forms.Button
         Me.lbCount = New System.Windows.Forms.Label
@@ -502,7 +502,7 @@ Public Class frmOpenDC
                     GoTo FailRecord
                 End If
                 UpdateAuditLog("Input file " & szFileName & " loaded into system", "Production")
-
+                
                 dwTotalPass += 1
                 GoTo NextRecord
 
