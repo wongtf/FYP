@@ -1,4 +1,4 @@
-Public Class frmUploadFileSetupDC
+Public Class frmUploadFileSetup
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -66,7 +66,7 @@ Public Class frmUploadFileSetupDC
     Friend WithEvents Label13 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUploadFileSetupDC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUploadFileSetup))
         Me.TreeView1 = New System.Windows.Forms.TreeView
         Me.ContextMenu1 = New System.Windows.Forms.ContextMenu
         Me.mnuUploadFileSetupAdd = New System.Windows.Forms.MenuItem
