@@ -1,5 +1,4 @@
 Imports System.IO
-Imports System.Collections.Generic
 Module ModConvFunction
     'for data design spec
     Public dwDataRecLength As Long
@@ -100,13 +99,9 @@ Module ModConvFunction
         Dim szCNType As String
         Dim myconn As New OleDb.OleDbConnection()
         Dim szSQL As String
-        Dim szDataArithmetic As String = ""
 
         Dim szOldDateFormat As String = ""
         Dim szDateFormat As String = ""
-
-        'add new 08/02/2013
-        Dim boolCheckNameSeparator As Boolean
 
         GetFieldData = ""
         'Try
@@ -138,16 +133,12 @@ Module ModConvFunction
 
             szConstantData = IIf(IsDBNull(datareader("data_constant")), "", datareader("data_constant"))
             szCompositeData = IIf(IsDBNull(datareader("data_composite_data")), "", datareader("data_composite_data"))
-            szDataArithmetic = IIf(IsDBNull(datareader("data_composite_data")), "", datareader("data_composite_data"))
 
             szReplaceChar = IIf(IsDBNull(datareader("data_repl_charCode")), "", datareader("data_repl_charCode"))
             boolCheckPoscode = IIf(IsDBNull(datareader("data_checkPoscode")), False, CBool(datareader("data_checkPoscode")))
             boolGetLastDayOfMth = IIf(IsDBNull(datareader("data_get_lastDayofMth")), False, CBool(datareader("data_get_lastDayofMth")))
             boolCurrencyFld = IIf(IsDBNull(datareader("data_currencyfld")), False, CBool(datareader("data_currencyfld")))
             szOutputFormat = IIf(IsDBNull(datareader("data_output_format")), "", datareader("data_output_format"))
-
-            'add new 08/02/2013 azuwa kasnan
-            'boolCheckNameSeparator = IIf(IsDBNull(datareader("data_nameseparator")), False, CBool(datareader("data_nameseparator")))
         Else
             Return ""
         End If
@@ -176,9 +167,6 @@ Module ModConvFunction
                 Else
                     szOutputData = Convert.ToString(szDateFormat)
                 End If
-            Case 5
-                'Arithmetic data field
-                szOutputData = FormatArithmeticFld(szRawText, szDataArithmetic, dwDSetupID, dwDataFldID)
         End Select
 
         'replace character in string
@@ -219,11 +207,6 @@ Module ModConvFunction
         If boolCurrencyFld = True Then
             szOutputData = Microsoft.VisualBasic.Format(Val(szOutputData), "###,###,###,###")
         End If
-
-        'add new 08/02/2013 azuwa kasnan
-        'If boolCheckNameSeparator = True Then
-        'szOutputData = Replace(szOutputData, " ", "/", 1, 1)
-        'End If
 
         'check the output format
         If szOutputFormat <> "" Then
@@ -352,10 +335,6 @@ chkerr:  '   Catch ex As Exception
         Dim boolCurrencyFld As Boolean
         Dim szInputData As String
 
-        Dim szDataConstant As String
-        Dim szDataArithmetic As String
-
-
         FormatCompositeFld = ""
         Try
             Dbconn.ConnectionString = gszConnString
@@ -378,9 +357,7 @@ chkerr:  '   Catch ex As Exception
                     szExtChar = Mid(szCompositeData, dwi, dwFoundPlusSign - dwi)
                 End If
 
-                If Mid(szExtChar, 1, 4) = "PP//" Then 'added for PP special handling
-                    szExtChar = szExtChar
-                ElseIf Mid(szExtChar, 1, 1) = "P" Then
+                If Mid(szExtChar, 1, 1) = "P" Then
                     szInputData = szRawText
                     szExtChar = Mid(szExtChar, 2)
                 ElseIf Mid(szExtChar, 1, 1) = "S" Then
@@ -406,10 +383,6 @@ chkerr:  '   Catch ex As Exception
                             dwStartPosition = IIf(IsDBNull(datareader("data_start_pos")), 0, Val(datareader("data_start_pos")))
                             dwFldleng = IIf(IsDBNull(datareader("data_length")), 0, Val(datareader("data_length")))
 
-                            szDataConstant = IIf(IsDBNull(datareader("data_constant")), "", datareader("data_constant"))
-                            'szDataComposite = IIf(IsDBNull(datareader("data_composite_data")), 0, Val(datareader("data_composite_data")))
-                            szDataArithmetic = IIf(IsDBNull(datareader("data_composite_data")), "", datareader("data_composite_data"))
-
                             'get the start code in hex and convert to character
                             szStartCode = IIf(IsDBNull(datareader("data_start_code")), "", datareader("data_start_code"))
                             szEndCode = IIf(IsDBNull(datareader("data_end_code")), "", datareader("data_end_code"))
@@ -427,8 +400,6 @@ chkerr:  '   Catch ex As Exception
                             If boolCurrencyFld = True Then
                                 szData = Microsoft.VisualBasic.Format(Val(szData), "###,###,###,###")
                             End If
-                        ElseIf dwDataType = 1 Then
-                            szData = szDataConstant
                         ElseIf dwDataType = 3 Then
                             Dim dtSystemDate As DateTime = DateTime.Now.ToString("d")
                             If szDateFormat <> "" Then
@@ -436,11 +407,8 @@ chkerr:  '   Catch ex As Exception
                             Else
                                 szData = Convert.ToString(szDateFormat)
                             End If
-                        ElseIf dwDataType = 5 Then 'case 5
-                            If szInputData <> "" Then
-                                szData = FormatArithmeticFld(szInputData, szDataArithmetic, dwDSetupID, dwDataFldID)
-                            End If
-                            End If
+                        End If
+
                     Else 'get from the merge field data
                         szData = szExtChar
                     End If
@@ -1094,37 +1062,24 @@ FmtOCRData:
 
                         szData = GetFieldData(szRawText, "", dwDSetupID, dwDataFldID)
 
-                        'edit by azuwa kasnan27102013
                         'szTempSMCData = szTempSMCData & HEXtoCHAR(szTagName & szTagLength & szData)
-                        If (szTagLength <> "00") Then
-                            szTempSMCData = szTempSMCData & szTagName & szTagLength & szData
-                        Else
-                            szTempSMCData = szTempSMCData & szTagName & szData
-                        End If
-
-
+                        szTempSMCData = szTempSMCData & szTagName & szTagLength & szData
 
                     End While
                 End If
-                datareader.Close()
-                'checking on whole smartcard data length    
 
-                
+                'checking on whole smartcard data length
+
                 szsClen = Hex(szTempSMCData.Length / 2)
                 szHexSClen = szsClen.PadLeft(4, "0")
                 szTempSMCData = szHexSClen & szTempSMCData
 
-                'edit by azuwa kasnan 27102013
-                If szAppName(dwi - 1) = "10100000" Or szAppName(dwi - 1) = "01040200" Then
-
-                    'Pad the KEK ID to the SC Dat
-                    szTempSMCData = "000000000000000000000000" & szTempSMCData
-                    'check length after put in the kek id
-                    szsClen = Hex(szTempSMCData.Length / 2)
-                    szHexSClen = szsClen.PadLeft(4, "0")
-                    szTempSMCData = szHexSClen & szTempSMCData
-                End If
-
+                'Pad the KEK ID to the SC Dat
+                szTempSMCData = "000000000000000000000000" & szTempSMCData
+                'check length after put in the kek id
+                szsClen = Hex(szTempSMCData.Length / 2)
+                szHexSClen = szsClen.PadLeft(4, "0")
+                szTempSMCData = szHexSClen & szTempSMCData
 
                 'Pad the AppName to SC Data
                 szTempSMCData = szAppName(dwi - 1) & szTempSMCData
@@ -1151,7 +1106,6 @@ FmtOCRData:
             'oFileStream.Close()
 
             FormatSMC = szTempSMCAppData
-
         Catch ex As Exception
             MessageBox.Show("modConvFunction.FormatSMC[" & dwCardSetupID & "]: Exception-" & ex.Message)
             FormatSMC = ""
@@ -1603,123 +1557,6 @@ ReadNextRec:
 
         Return CInt(VB6.Format(Year(vDate), "0000") & VB6.Format(DateDiff(Microsoft.VisualBasic.DateInterval.Day, CDate("01/01/" & VB6.Format(Year(vDate), "0000")), vDate) + 1, "000"))
 
-    End Function
-
-    Private Function FormatArithmeticFld(ByVal szInputData As String, ByVal szDataArithmetic As String, ByVal dwDSetupID As Integer, ByVal dwDataFldID As Integer) As String
-        Dim SC As New MSScriptControl.ScriptControl
-
-        Dim dwFoundOprSign As Integer = 0
-        Dim dwFoundOprSignArr() As Integer = {0, 0, 0, 0}
-        Dim szDataArithCharArr() As Char
-        Dim szData As String = ""
-        Dim dwRslt As Double = 0
-        Dim szArithFld As String = ""
-        Dim szArithFldTemp As String = ""
-        Dim dwDataLength As Integer = 0
-        Dim dwi As Integer
-        Dim dwj As Integer
-        Dim szExtChar As String = ""
-        Dim szDataFldName As String = ""
-        Dim szArithData As String = ""
-        Dim dwDataType As Integer
-        Dim dwStartPosition As Integer
-        Dim dwFldleng As Integer
-        Dim szStartCode As String = ""
-        Dim szEndCode As String = ""
-        Dim szDataConstant As String = ""
-        Dim szOperatorsArr As New List(Of String)
-        Dim dwk As Integer = 0
-        Dim bFirstChar As Boolean = False
-
-
-        Dim Dbconn As New OleDb.OleDbConnection()
-
-        'SET LANGUAGE TO VBSCRIPT
-        SC.Language = "VBSCRIPT"
-
-        szArithFld = szDataArithmetic
-
-        FormatArithmeticFld = ""
-
-        Try
-            Dbconn.ConnectionString = gszConnString
-            Dbconn.Open()
-
-            Dim myCmd As New OleDb.OleDbCommand()
-            myCmd.Connection = Dbconn
-            Dim datareader As OleDb.OleDbDataReader = Nothing
-            dwDataLength = Len(szDataArithmetic)
-
-            'store all operators
-            szDataArithCharArr = szDataArithmetic.ToCharArray
-            dwk = 0
-            For dwi = 0 To szDataArithCharArr.Length - 1
-                If szDataArithCharArr(dwi) = "+" Or szDataArithCharArr(dwi) = "-" Or szDataArithCharArr(dwi) = "*" Or szDataArithCharArr(dwi) = "/" Then
-                    szOperatorsArr.Add(szDataArithCharArr(dwi).ToString())
-                    dwk += 1
-                End If
-            Next
-
-            dwj = 0
-            For dwi = 1 To dwDataLength
-                'dwi = dwFoundOprSign + 1
-
-
-                dwFoundOprSign = InStr(dwi, szDataArithmetic, szOperatorsArr(dwj), vbTextCompare)
-                If dwj < szOperatorsArr.Count() - 1 Then
-                    dwj += 1
-                End If
-
-
-                If dwFoundOprSign = 0 Then
-                    szExtChar = Mid(szDataArithmetic, dwi)
-                Else
-                    szExtChar = Mid(szDataArithmetic, dwi, dwFoundOprSign - dwi)
-                End If
-
-                szExtChar = szExtChar.Replace("(", "")
-                szExtChar = szExtChar.Replace(")", "")
-                If Left(szExtChar, 1) = "<" Then
-                    szDataFldName = Mid(szExtChar, 2, Len(szExtChar) - 2)
-                    myCmd.CommandText = "SELECT * FROM DataSetup where ds_id=" & dwDSetupID & " and data_field_name='" & szDataFldName & "'"
-                    datareader = myCmd.ExecuteReader()
-
-                    If datareader.HasRows Then
-                        While datareader.Read()
-                            dwDataType = IIf(IsDBNull(datareader("data_field_type")), 0, Val(datareader("data_field_type")))
-                            dwStartPosition = IIf(IsDBNull(datareader("data_start_pos")), 0, Val(datareader("data_start_pos")))
-                            dwFldleng = IIf(IsDBNull(datareader("data_length")), 0, Val(datareader("data_length")))
-
-                            szDataConstant = IIf(IsDBNull(datareader("data_constant")), 0, Val(datareader("data_constant")))
-                            'get the start code in hex and convert to character
-                            szStartCode = IIf(IsDBNull(datareader("data_start_code")), "", datareader("data_start_code"))
-                            szEndCode = IIf(IsDBNull(datareader("data_end_code")), "", datareader("data_end_code"))
-                        End While
-                    End If
-                    datareader.Close()
-
-                    If dwDataType = 0 Then
-                        szArithData = FormatVariableFld(dwStartPosition, dwFldleng, szStartCode, szEndCode, szInputData, dwDSetupID, dwDataFldID)
-                    ElseIf dwDataType = 1 Then
-                        szArithData = szDataConstant
-                    End If
-                    szArithFldTemp = szArithFld.Replace(szExtChar, szArithData)
-                    szArithFld = szArithFldTemp
-                End If
-            Next
-
-
-
-            dwRslt = Convert.ToDouble(SC.Eval(szArithFldTemp))
-            szData = Convert.ToString(dwRslt)
-            FormatArithmeticFld = szData
-
-        Catch ex As Exception
-            MessageBox.Show("modConvFunction.FormatCompositeFld for DataSetupID[" & dwDSetupID & "]" & vbCrLf & " DataFldID[" & dwDataFldID & "]: Exception-" & ex.Message)
-            Return ""
-        Finally
-            Dbconn.Close()
-        End Try
     End Function
 
 End Module
