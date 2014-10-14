@@ -1,67 +1,206 @@
-Module oledbMod
+Imports System.IO
 
-    'Constant Declaration
-    Private Const oledb_ADD_DSN As Integer = 1        ' Add data source
-    Private Const oledb_CONFIG_DSN As Integer = 2     ' Configure (edit) data source
-    Private Const oledb_REMOVE_DSN As Integer = 3     ' Remove data source
+Module Security
 
-    Private Declare Function SQLConfigDataSource Lib "oledbCP32.DLL" (ByVal hwndParent As Integer, ByVal fRequest As Integer, ByVal lpszDriver As String, ByVal lpszAttributes As String) As Integer
+    Declare Function SDelFile Lib "sDelete.dll" Alias "SDelete" (ByVal sFileName As String) As Boolean
 
-    Public Function CreateDSN(ByVal szDSNname As String, ByVal szServer As String, ByVal szDatabase As String, ByVal szUID As String, ByVal szPWD As String) As Boolean
+    Public Function WipeFile(ByVal szFile As String) As Boolean
         Try
-            CreateDSN = False
-
-            Dim intRet As Integer
-            Dim szDriver As String
-            Dim szAttributes As String
-
-            ''Set the driver to SQL Server because it is most common.
-            'szDriver = "Microsoft Access Driver (*.mdb)"
-            'szAttributes = "Description=XMLc database connection" & Chr(0) & _
-            '                "DSN=" & szDSNname & Chr(0) & _
-            '                "dbq=" & szDatabase & Chr(0) & _
-            '                "UID=" & szUID & Chr(0) & _
-            '                "PWD=" & szPWD & Chr(0) & _
-            '                "Server=Microsoft Access Driver (*.mdb)"
-
-            szDriver = "SQL Server"
-            szAttributes = "Description=Delivery Report database connection" & Chr(0) & _
-                           "DSN=" & szDSNname & Chr(0) & _
-                           "SERVER=" & szServer & Chr(0) & _
-                           "DATABASE=" & szDatabase & Chr(0)
-
-            intRet = SQLConfigDataSource(0, oledb_ADD_DSN, szDriver, szAttributes)
-            If intRet Then
-                CreateDSN = True
+            If IsFileExist(szFile) = True Then
+                File.Delete(szFile)
             End If
-
+            Return True
         Catch ex As Exception
-            MessageBox.Show("obdc_CreateDSN: Exception-" & ex.Message)
         End Try
+
     End Function
 
-    Public Function DeleteDSN(ByVal szDSNname As String) As Boolean
+    Public Function DecryptFile(ByVal szInputFile As String, ByVal szOutputFile As String) As Boolean
+        Dim szDecryptBatchFile As String = ""
+        Dim szDumpFile As String
+        Dim szFileName As String
+        Dim szErrorFileName As String
+
         Try
-            DeleteDSN = False
+            szFileName = Path.GetFileName(szInputFile)
+            szErrorFileName = BankInfo.Folder_Error & szFileName
 
-            Dim intRet As Integer
-            Dim szDriver As String
-            Dim szAttributes As String
+            If Strings.Right(szFileName, 4) = EXT_ENC Then
+                szDecryptBatchFile = gszWorkDrive & DECRYPT_BAT_FILE
+                szDumpFile = gszWorkDrive & DUMMY_FILE
 
-            'Set the driver to SQL Server because most common.
-            szDriver = "Microsoft Access Driver (*.mdb)"
+                Dim objDumpFile As New StreamWriter(szDumpFile, True)
+                objDumpFile.WriteLine("Hello")
+                objDumpFile.Close()
 
-            'Set the attributes delimited by null.
-            szAttributes = "DSN=" & szDSNname & Chr(0)
+                If (IsFileExist(szDecryptBatchFile) = True) Then
+                    WipeFile(szDecryptBatchFile)
+                End If
 
-            intRet = SQLConfigDataSource(0, oledb_REMOVE_DSN, szDriver, szAttributes)
-            If intRet Then
-                DeleteDSN = True
+                Dim objDecryptFile As New StreamWriter(szDecryptBatchFile, True)
+
+                objDecryptFile.WriteLine("java -classpath .;" & BankInfo.Folder_EncService & " Encrypt -c -p 2468 -x -i " & szInputFile & " -o " & szOutputFile)
+                objDecryptFile.WriteLine("if exist " & szDumpFile & " del " & szDumpFile)
+                objDecryptFile.WriteLine("exit")
+
+                objDecryptFile.Close()
+                Shell(szDecryptBatchFile, AppWinStyle.Hide, False)
+
+                'Do While IsFileExist(szDumpFile)
+                'Loop
+                Do While Dir(szDumpFile) <> ""
+                Loop
+
+                If (IsFileExist(szDecryptBatchFile) = True) Then
+                    WipeFile(szDecryptBatchFile)
+                End If
+
+                If (IsFileExist(szOutputFile) = True) Then
+                    Return True
+                Else
+                    MyMoveFile(szInputFile, szErrorFileName)
+                    Return False
+                End If
+
+            Else
+                MyMoveFile(szInputFile, szErrorFileName)
+                Return False
             End If
 
         Catch ex As Exception
-            MessageBox.Show("obdc_DeleteDSN: Exception-" & ex.Message)
+            If (IsFileExist(szDecryptBatchFile) = True) Then
+                WipeFile(szDecryptBatchFile)
+            End If
+
+            MessageBox.Show("DecryptFile: exception-" + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
+
+    End Function
+
+    Public Function EncryptFile(ByVal szInputFile As String, ByVal szOutputfile As String) As Boolean
+        Dim szEncryptBatchFile As String = ""
+        Dim szDumpFile As String
+
+        Try
+            szEncryptBatchFile = gszWorkDrive & ENCRYPT_BAT_FILE
+            szDumpFile = gszWorkDrive & DUMMY_FILE
+
+            Dim objDumpFile As New StreamWriter(szDumpFile, True)
+            objDumpFile.WriteLine("Hello")
+            objDumpFile.Close()
+
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            Dim objEncryptFile As New StreamWriter(szEncryptBatchFile, True)
+
+            objEncryptFile.WriteLine("java -classpath .;" & BankInfo.Folder_EncService & " Encrypt -c -p 2468 -i " & szInputFile & " -o " & szOutputfile)
+            objEncryptFile.WriteLine("if exist " & szDumpFile & " del " & szDumpFile)
+            objEncryptFile.WriteLine("exit")
+
+            objEncryptFile.Close()
+            Shell(szEncryptBatchFile, AppWinStyle.Hide, False)
+
+            'Do While IsFileExist(szDumpFile)
+            'Loop
+            Do While Dir(szDumpFile) <> ""
+            Loop
+
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            System.Threading.Thread.Sleep(1000)
+
+            Return IsFileExist(szOutputfile)
+
+        Catch ex As Exception
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            MessageBox.Show("EncryptFile: exception-" + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
+    End Function
+
+    Public Function EncryptEMVESFile() As Boolean
+        Dim szEncryptBatchFile As String = ""
+        Dim szDumpFile As String
+
+        Try
+            szEncryptBatchFile = gszWorkDrive & ENCRYPT_EMVES_BAT_FILE
+            szDumpFile = gszWorkDrive & DUMMY_FILE
+
+            Dim objDumpFile As New StreamWriter(szDumpFile, True)
+            objDumpFile.WriteLine("Hello")
+            objDumpFile.Close()
+
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            Dim objEncryptFile As New StreamWriter(szEncryptBatchFile, True)
+
+            objEncryptFile.WriteLine("emvesclient -e")
+            objEncryptFile.WriteLine("if exist " & szDumpFile & " del " & szDumpFile)
+            objEncryptFile.WriteLine("exit")
+
+            objEncryptFile.Close()
+            Shell(szEncryptBatchFile, AppWinStyle.Hide, False)
+
+            'Do While IsFileExist(szDumpFile)
+            'Loop
+            Do While Dir(szDumpFile) <> ""
+            Loop
+
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            System.Threading.Thread.Sleep(1000)
+
+        Catch ex As Exception
+            If (IsFileExist(szEncryptBatchFile) = True) Then
+                WipeFile(szEncryptBatchFile)
+            End If
+
+            MessageBox.Show("EncryptFile: exception-" + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+
+    Public Function EncryptString(ByVal szPlainText As String, ByRef szCipherText As String) As Boolean
+        Try
+            Dim CryptographyFactory As New CryptoFactory
+            Dim Cryptographer As ICrypto = CryptographyFactory.MakeCryptographer("rijndael")
+
+            szCipherText = Cryptographer.Encrypt(szPlainText)
+            Return True
+
+        Catch ex As Exception
+            szCipherText = ""
+            Return False
+        End Try
+
+    End Function
+
+    Public Function DecryptString(ByVal szCipherText As String, ByRef szPlainText As String) As Boolean
+        Try
+            Dim CryptographyFactory As New CryptoFactory
+            Dim Cryptographer As ICrypto = CryptographyFactory.MakeCryptographer("rijndael")
+
+            szPlainText = Cryptographer.Decrypt(szCipherText)
+            Return True
+
+        Catch ex As Exception
+            szPlainText = ""
+            Return False
+        End Try
+
     End Function
 
 End Module
